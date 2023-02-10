@@ -49,11 +49,14 @@
     </div>
     <div class="mt-8">
       <h3 class="text-lg font-medium">
-        <a href="#" class="focus:outline-none">
+        <button
+          (click)="routingService.moveToArticleList()"
+          class="focus:outline-none"
+        >
           <!-- Extend touch target to entire panel -->
           <span class="absolute inset-0" aria-hidden="true"></span>
           Articles
-        </a>
+        </button>
       </h3>
       <p class="mt-2 text-sm text-gray-500">
         記事の作成や編集、削除を行います。
@@ -103,11 +106,14 @@
     </div>
     <div class="mt-8">
       <h3 class="text-lg font-medium">
-        <a href="#" class="focus:outline-none">
+        <button
+          (click)="routingService.moveToTags()"
+          class="focus:outline-none"
+        >
           <!-- Extend touch target to entire panel -->
           <span class="absolute inset-0" aria-hidden="true"></span>
           Tags
-        </a>
+        </button>
       </h3>
       <p class="mt-2 text-sm text-gray-500">タグの作成・削除を行います。</p>
     </div>
@@ -155,11 +161,14 @@
     </div>
     <div class="mt-8">
       <h3 class="text-lg font-medium">
-        <a href="#" class="focus:outline-none">
+        <button
+          (click)="routingService.moveToDrafts()"
+          class="focus:outline-none"
+        >
           <!-- Extend touch target to entire panel -->
           <span class="absolute inset-0" aria-hidden="true"></span>
           Drafts
-        </a>
+        </button>
       </h3>
       <p class="mt-2 text-sm text-gray-500">下書きの作成・編集を行います。</p>
     </div>
