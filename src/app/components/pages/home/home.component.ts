@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Article } from 'src/app/models/article.model';
-import { HomeService } from 'src/app/services/pages/home.service';
+import { HomeService } from 'src/app/services/pages/home/home.service';
 import { RoutingService } from 'src/app/services/routing/routing.service';
 
 @Component({
@@ -10,17 +10,14 @@ import { RoutingService } from 'src/app/services/routing/routing.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  public articles: Article[];
-
   constructor(
     private homeService: HomeService,
     public routingService: RoutingService
   ) {}
 
-  ngOnInit(): void {
-    this.homeService
-      .getArticles()
-      .then((articles) => (this.articles = articles));
-    console.log('hello');
+  public articles: Article[];
+
+  async ngOnInit(): Promise<void> {
+    this.articles = await this.homeService.getArticles();
   }
 }
