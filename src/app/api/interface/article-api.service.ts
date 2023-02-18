@@ -1,21 +1,40 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Urls } from 'src/app/constants/urls';
 import { Article } from 'src/app/models/article.model';
 import { ResponseBody } from 'src/app/models/response-body.model';
+import { HttpParams } from '@angular/common/http';
+import { Observable, Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ArticleApiService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   /**
-   * ブログ記事一覧取得API
+   * 記事を取得する
+   *
+   * @param offset オフセット（何件目以降の記事を取得するか）
+   * @param count 取得する件数（0を指定した場合は全件取得する）
+   * @param fields 取得するフィールド
+   * @returns
    */
-  public getArticles(): Promise<Article[]> {
-    return fetch(Urls.ARTICLES_URL)
-      .then((response: Response) => response.json())
-      .then((body: ResponseBody<Article[]>) => body.data);
+  public getArticles(
+    offset: number,
+    count: number,
+    ...fields: string[]
+  ): Observable<ResponseBody<Article[]>> {
+    // パラメータ
+    let options = {
+      params: new HttpParams().set('offset', offset).set('count', count),
+    };
+    // 取得するフィールドをパラメータにセットする
+    fields.forEach((field: string) => {
+      options.params = options.params.append('fields', field);
+    });
+    // httpリクエスト
+    return this.http.get<ResponseBody<Article[]>>(Urls.ARTICLES_URL, options);
   }
 
   /**

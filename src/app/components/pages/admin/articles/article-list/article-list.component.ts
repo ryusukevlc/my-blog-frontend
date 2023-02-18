@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Article } from 'src/app/models/article.model';
+import { ResponseBody } from 'src/app/models/response-body.model';
 import { ArticleListService } from 'src/app/services/pages/admin/article-list/article-list.service';
 import { RoutingService } from 'src/app/services/routing/routing.service';
 
@@ -16,7 +17,20 @@ export class ArticleListComponent {
 
   public articles: Article[];
 
+  private fields: string[] = [
+    'id',
+    'title',
+    'content',
+    'created_at',
+    'updated_at',
+    'writing',
+  ];
+
   async ngOnInit(): Promise<void> {
-    this.articles = await this.articleListService.getArticles();
+    this.articleListService
+      .getArticles(...this.fields)
+      .subscribe((responseBody: object) => {
+        this.articles = JSON.parse(responseBody.toString()).data;
+      });
   }
 }
