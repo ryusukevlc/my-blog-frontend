@@ -4,8 +4,8 @@ export class Article {
   public id: number;
   public title: string;
   public content: string;
-  public created_at: Date;
-  public updated_at: Date;
+  public created_at: string;
+  public updated_at: string;
   public thumbnail: string;
   public tagList: Tag[];
 
@@ -13,8 +13,8 @@ export class Article {
     id: number,
     title: string,
     content: string,
-    created_at: Date,
-    updated_at: Date,
+    created_at: string,
+    updated_at: string,
     thumbnail: string,
     tagList: Tag[]
   ) {
