@@ -33,6 +33,9 @@ export class HomeComponent {
   // 取得する記事の件数
   private count: number = 10;
 
+  /**
+   * ngOnInit
+   */
   ngOnInit(): void {
     // 記事一覧を取得する
     this.homeService
@@ -40,6 +43,7 @@ export class HomeComponent {
       .subscribe((responseBody) => {
         let articles: Article[] = responseBody.data;
         articles.forEach((article) => {
+          // 配列形式の日付をハイフン形式の日付にコンバートする
           article.created_at = new Datetime().convertJacksonTime(
             Array.from(article.created_at)
           );
@@ -47,27 +51,27 @@ export class HomeComponent {
         this.articles = articles;
       });
 
-    // 記事の全件数を取得する
+    // 記事（下書き以外）の全件数を取得する
     this.homeService.getArticleCount().subscribe((responseBody) => {
-      console.log('hello');
       let count: Count = responseBody.data;
-      console.log('hello2');
       this.pageCount = Math.ceil(count.allArticleNumbers / this.count);
       this.pageNumberArray = new Array(this.pageCount);
-      console.log(this.pageCount);
       for (let i = 1; i <= this.pageCount; i++) {
-        console.log(i);
-        console.log(this.pageNumberArray);
         this.pageNumberArray[i] = i;
       }
-      console.log(this.pageNumberArray);
-      console.log(this.pageCount);
     });
   }
 
+  /**
+   * ページング処理
+   * @param number
+   */
   public movePage(number: number) {
+    // ページ番号クリック時にページの一番上に移動する
     window.scrollTo(0, 0);
+    // 選択したページの番号を保持する
     this.selectedNumber = number;
+    // 記事を取得する
     this.homeService
       .getArticles(
         this.count * (this.selectedNumber - 1) + 1,
@@ -77,6 +81,7 @@ export class HomeComponent {
       .subscribe((responseBody) => {
         let articles: Article[] = responseBody.data;
         articles.forEach((article) => {
+          // 配列形式の日付をハイフン形式の日付にコンバートする
           article.created_at = new Datetime().convertJacksonTime(
             Array.from(article.created_at)
           );
