@@ -19,7 +19,7 @@ export class HomeComponent {
 
   public articles: Article[];
 
-  private fields = ['id', 'title', 'content', 'created_at'];
+  private fields = ['id', 'title', 'partOfContent', 'created_at'];
   private offset: number = 0;
   private count: number = 10;
 
