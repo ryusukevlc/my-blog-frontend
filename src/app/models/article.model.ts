@@ -9,6 +9,7 @@ export class Article {
   public thumbnail: string;
   public tagList: Tag[];
   public partOfContent: string;
+  public allNumbers: number;
 
   constructor(
     id: number,
@@ -18,7 +19,8 @@ export class Article {
     updated_at: string,
     thumbnail: string,
     tagList: Tag[],
-    partofContent: string
+    partofContent: string,
+    allNumbers: number
   ) {
     this.id = id;
     this.title = title;
@@ -28,5 +30,6 @@ export class Article {
     this.thumbnail = thumbnail;
     this.tagList = tagList;
     this.partOfContent = partofContent;
+    this.allNumbers = allNumbers;
   }
 }

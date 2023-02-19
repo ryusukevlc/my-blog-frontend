@@ -5,6 +5,7 @@ import { Article } from 'src/app/models/article.model';
 import { ResponseBody } from 'src/app/models/response-body.model';
 import { HttpParams } from '@angular/common/http';
 import { Observable, Subscription } from 'rxjs';
+import { Count } from 'src/app/models/count.model';
 
 @Injectable({
   providedIn: 'root',
@@ -27,7 +28,10 @@ export class ArticleApiService {
   ): Observable<ResponseBody<Article[]>> {
     // パラメータ
     let options = {
-      params: new HttpParams().set('offset', offset).set('count', count),
+      params: new HttpParams()
+        .set('action', 'getArticles')
+        .set('offset', offset)
+        .set('count', count),
     };
     // 取得するフィールドをパラメータにセットする
     fields.forEach((field: string) => {
@@ -50,5 +54,12 @@ export class ArticleApiService {
         console.log(body.data);
         return body.data;
       });
+  }
+
+  public getArticleCount() {
+    let options = {
+      params: new HttpParams().set('action', 'getCount'),
+    };
+    return this.http.get<ResponseBody<Count>>(Urls.ARTICLES_URL, options);
   }
 }

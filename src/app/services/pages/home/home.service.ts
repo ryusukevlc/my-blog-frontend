@@ -14,7 +14,15 @@ export class HomeService {
    * ブログ記事取得
    * @returns
    */
-  public getArticles(offset: number, count: number, ...fields: string[]) {
+  public getArticles(
+    offset: number,
+    count: number,
+    ...fields: string[]
+  ): Observable<ResponseBody<Article[]>> {
     return this.articleApiService.getArticles(offset, count, ...fields);
+  }
+
+  public getArticleCount() {
+    return this.articleApiService.getArticleCount();
   }
 }
