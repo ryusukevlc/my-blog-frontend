@@ -63,6 +63,24 @@ export class HomeComponent {
   }
 
   /**
+   * 前のページに遷移
+   * @returns
+   */
+  public movePreviousPage() {
+    if (this.selectedNumber == 1) return;
+    this.movePage(this.selectedNumber - 1);
+  }
+
+  /**
+   * 次のページに遷移
+   * @returns
+   */
+  public moveNextPage() {
+    if (this.selectedNumber == this.pageCount) return;
+    this.movePage(this.selectedNumber + 1);
+  }
+
+  /**
    * ページング処理
    * @param number
    */
@@ -74,7 +92,7 @@ export class HomeComponent {
     // 記事を取得する
     this.homeService
       .getArticles(
-        this.count * (this.selectedNumber - 1) + 1,
+        this.count * (this.selectedNumber - 1),
         this.count,
         ...this.fields
       )

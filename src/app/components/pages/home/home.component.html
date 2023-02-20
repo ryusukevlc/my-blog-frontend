@@ -32,12 +32,13 @@
     </div>
   </div>
   <nav
-    class="flex items-center justify-between border-t border-gray-200 dark:border-gray-500 px-4 sm:px-0"
+    class="flex items-center justify-between border-t border-gray-200 dark:border-gray-500 px-4 sm:px-0 max-w-5xl px-6 mx-auto"
   >
     <div class="-mt-px flex w-0 flex-1">
       <a
-        href="#"
-        class="inline-flex items-center border-t-2 border-transparent pt-4 pr-1 text-sm font-medium text-gray-500 hover:border-gray-300 dark:hover:border-gray-400 hover:text-gray-700 dark:hover:text-gray-400"
+        [class.hidden]="this.selectedNumber == 1"
+        (click)="movePreviousPage()"
+        class="hover:cursor-pointer inline-flex items-center border-t-2 border-transparent pt-4 pr-1 text-sm font-medium text-gray-500 hover:border-gray-300 dark:hover:border-gray-400 hover:text-gray-700 dark:hover:text-gray-400"
       >
         <svg
           class="mr-3 h-5 w-5 text-gray-400"
@@ -59,7 +60,9 @@
         *ngFor="let number of pageNumberArray"
         (click)="movePage(number)"
         [ngClass]="
-          selectedNumber == number ? 'border-red-500 text-red-600' : ''
+          selectedNumber == number
+            ? 'border-red-500 text-red-600 pointer-events-none'
+            : ''
         "
         class="hover:cursor-pointer inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 dark:hover:border-gray-400 hover:text-gray-700 dark:hover:text-gray-400"
         >{{ number }}</a
@@ -67,8 +70,9 @@
     </div>
     <div class="-mt-px flex w-0 flex-1 justify-end">
       <a
-        href="#"
-        class="inline-flex items-center border-t-2 border-transparent pt-4 pl-1 text-sm font-medium text-gray-500 hover:border-gray-300 dark:hover:border-gray-400 hover:text-gray-700 dark:hover:text-gray-400"
+        [class.hidden]="this.selectedNumber == this.pageCount"
+        (click)="moveNextPage()"
+        class="hover:cursor-pointer inline-flex items-center border-t-2 border-transparent pt-4 pl-1 text-sm font-medium text-gray-500 hover:border-gray-300 dark:hover:border-gray-400 hover:text-gray-700 dark:hover:text-gray-400"
       >
         Next
         <svg
