@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Article } from 'src/app/models/article.model';
 import { ArticleDetailService } from 'src/app/services/pages/article-detail/article-detail.service';
+import { Datetime } from 'src/app/util/Datetime';
 
 @Component({
   selector: 'app-article-detail',
@@ -9,24 +10,19 @@ import { ArticleDetailService } from 'src/app/services/pages/article-detail/arti
   styleUrls: ['./article-detail.component.scss'],
 })
 export class ArticleDetailComponent {
-  constructor(
-    private articleDetailService: ArticleDetailService,
-    private route: ActivatedRoute
-  ) {}
+  constructor(private route: ActivatedRoute) {}
 
-  private id: number;
-
+  // 記事
   public article: Article;
 
+  /**
+   * ngOnInit
+   */
   ngOnInit() {
-    //クエリパラメータからidを取得
-    this.route.queryParams.subscribe((params) => {
-      this.id = Number(params['id']);
+    window.scrollTo(0, 0);
+    this.route.data.subscribe((data) => {
+      console.log(data);
+      this.article = data['responseBody'].data;
     });
-
-    //記事の詳細を取得
-    this.articleDetailService
-      .getArticleDetail(this.id)
-      .then((article) => (this.article = article));
   }
 }

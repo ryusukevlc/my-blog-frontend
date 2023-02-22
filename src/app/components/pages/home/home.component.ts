@@ -14,6 +14,7 @@ import { Datetime } from 'src/app/util/Datetime';
 })
 export class HomeComponent {
   constructor(
+    private router: Router,
     private homeService: HomeService,
     public routingService: RoutingService
   ) {}
@@ -32,11 +33,15 @@ export class HomeComponent {
   private offset: number = 0;
   // 取得する記事の件数
   private count: number = 10;
+  // スケルトンスクリーンの表示制御（true: スケルトンスクリーンを表示する, false: 表示しない）
+  public skeletonScreen: boolean = false;
 
   /**
    * ngOnInit
    */
   ngOnInit(): void {
+    // スケルトンスクリーンON
+    this.skeletonScreen = true;
     // 記事一覧を取得する
     this.homeService
       .getArticles(0, this.count, ...this.fields)
@@ -49,6 +54,9 @@ export class HomeComponent {
           );
         });
         this.articles = articles;
+
+        // スケルトンスクリーンOFF
+        this.skeletonScreen = false;
       });
 
     // 記事（下書き以外）の全件数を取得する
@@ -81,10 +89,25 @@ export class HomeComponent {
   }
 
   /**
+   * 記事詳細画面に遷移する
+   * @param articleId
+   */
+  public moveToArticleDetail(articleId: number) {
+    console.log(articleId);
+    this.router.navigate(['detail'], {
+      queryParams: { id: articleId.toString() },
+    });
+  }
+
+  /**
    * ページング処理
    * @param number
    */
   public movePage(number: number) {
+    // スケルトンスクリーンを表示するために記事一覧を空にする
+    this.articles = [];
+    // スケルトンスクリーンON
+    this.skeletonScreen = true;
     // ページ番号クリック時にページの一番上に移動する
     window.scrollTo(0, 0);
     // 選択したページの番号を保持する
@@ -105,6 +128,8 @@ export class HomeComponent {
           );
         });
         this.articles = articles;
+        // スケルトンスクリーンOFF
+        this.skeletonScreen = false;
       });
   }
 }

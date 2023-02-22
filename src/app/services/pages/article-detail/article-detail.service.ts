@@ -7,13 +7,4 @@ import { Article } from 'src/app/models/article.model';
 })
 export class ArticleDetailService {
   constructor(private articleApiService: ArticleApiService) {}
-
-  /**
-   * ブログ記事詳細取得
-   * @param id
-   * @returns
-   */
-  public getArticleDetail(id: number): Promise<Article> {
-    return this.articleApiService.getArticleDetail(id);
-  }
 }

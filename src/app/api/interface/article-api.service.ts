@@ -44,16 +44,14 @@ export class ArticleApiService {
   /**
    * ブログ記事詳細取得API
    */
-  public getArticleDetail(id: number): Promise<Article> {
-    let url = new URL(Urls.ARTICLE_DETAIL_URL);
-    url.searchParams.append('id', id.toString());
-
-    return fetch(url)
-      .then((response: Response) => response.json())
-      .then((body: ResponseBody<Article>) => {
-        console.log(body.data);
-        return body.data;
-      });
+  public getArticleDetail(id: number): Observable<ResponseBody<Article>> {
+    let options = {
+      params: new HttpParams().set('id', id),
+    };
+    return this.http.get<ResponseBody<Article>>(
+      Urls.ARTICLE_DETAIL_URL,
+      options
+    );
   }
 
   public getArticleCount() {

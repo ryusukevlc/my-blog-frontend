@@ -9,10 +9,18 @@ import { PortalComponent } from './components/pages/admin/portal/portal.componen
 import { TagsComponent } from './components/pages/admin/tags/tags.component';
 import { ArticleDetailComponent } from './components/pages/article-detail/article-detail.component';
 import { HomeComponent } from './components/pages/home/home.component';
+import { ArticleResolverService } from './services/resolver/article-resolver.service';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
-  { path: 'detail', component: ArticleDetailComponent, pathMatch: 'full' },
+  {
+    path: 'detail',
+    component: ArticleDetailComponent,
+    pathMatch: 'full',
+    resolve: {
+      responseBody: ArticleResolverService,
+    },
+  },
   { path: 'admin/login', component: LoginComponent, pathMatch: 'full' },
   {
     path: 'admin/portal',

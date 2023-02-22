@@ -8,16 +8,6 @@ export class RoutingService {
   constructor(private router: Router) {}
 
   /**
-   * 記事詳細画面に遷移する
-   * @param articleId
-   */
-  public moveToArticleDetail(articleId: number) {
-    this.router.navigate(['detail'], {
-      queryParams: { id: articleId.toString() },
-    });
-  }
-
-  /**
    * 記事一覧画面に遷移する
    */
   public moveToArticleList() {
