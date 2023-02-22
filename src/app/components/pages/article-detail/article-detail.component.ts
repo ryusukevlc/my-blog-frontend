@@ -15,13 +15,30 @@ export class ArticleDetailComponent {
   // 記事
   public article: Article;
 
+  // 更新有無ステータス
+  public isupdated: boolean = false;
+
   /**
    * ngOnInit
    */
   ngOnInit() {
     window.scrollTo(0, 0);
     this.route.data.subscribe((data) => {
-      this.article = data['responseBody'].data;
+      let article = data['responseBody'].data;
+
+      article.created_at = new Datetime().convertJacksonTime(
+        Array.from(article.created_at)
+      );
+
+      if (article.updated_at != undefined || article.updated_at != null) {
+        article.updated_at = new Datetime().convertJacksonTime(
+          Array.from(article.updated_at)
+        );
+        this.isupdated = true;
+      }
+      this.article = article;
     });
   }
+
+  public sortByTag(tagname: string) {}
 }

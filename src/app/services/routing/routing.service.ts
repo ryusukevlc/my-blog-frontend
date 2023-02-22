@@ -8,10 +8,27 @@ export class RoutingService {
   constructor(private router: Router) {}
 
   /**
+   * ホーム画面に遷移する
+   */
+  public moveToHome() {
+    this.router.navigate(['']);
+  }
+
+  /**
    * 記事一覧画面に遷移する
    */
   public moveToArticleList() {
     this.router.navigate(['admin/articleList']);
+  }
+
+  /**
+   * 記事詳細画面に遷移する
+   * @param articleId
+   */
+  public moveToArticleDetail(articleId: number) {
+    this.router.navigate(['detail'], {
+      queryParams: { id: articleId.toString() },
+    });
   }
 
   /**

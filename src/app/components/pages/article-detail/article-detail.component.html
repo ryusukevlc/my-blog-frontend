@@ -3,7 +3,25 @@
     class="hidden lg:absolute lg:inset-y-0 lg:block lg:h-full lg:w-full lg:[overflow-anchor:none]"
   ></div>
   <div class="lg:max-w-4xl mx-auto relative px-8 lg:px-8 md:px-8 md:max-w-2xl">
-    <div class="mx-auto max-w-prose text-lg">
+    <div class="flex mb-10 justify-end">
+      <div
+        class="mx-3 prose prose-lg prose-indigo text-gray-500 dark:text-gray-400"
+      >
+        {{ article.created_at }}
+        <span *ngIf="isupdated">（updated: {{ article.updated_at }}）</span>
+      </div>
+      <div
+        class="mx-2 cursor-pointer"
+        *ngFor="let tag of article.tagList"
+        (click)="sortByTag(tag.name)"
+      >
+        <span
+          class="inline-flex items-center rounded bg-red-100 px-2 py-0.5 text-xs font-medium text-red-800"
+          >{{ tag.name }}</span
+        >
+      </div>
+    </div>
+    <div class="mx-auto max-w-prose text-lg mb-10">
       <h1>
         <span
           class="block text-center text-lg font-semibold text-indigo-600"

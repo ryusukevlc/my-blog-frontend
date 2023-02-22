@@ -12,4 +12,10 @@ export class AppComponent {
   public toggleDarkmode(darkModeStatus: boolean) {
     this.isDarkMode = darkModeStatus;
   }
+
+  ngOnInit() {
+    if (localStorage['theme'] == 'dark') {
+      this.isDarkMode = true;
+    }
+  }
 }

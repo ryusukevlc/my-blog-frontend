@@ -89,16 +89,6 @@ export class HomeComponent {
   }
 
   /**
-   * 記事詳細画面に遷移する
-   * @param articleId
-   */
-  public moveToArticleDetail(articleId: number) {
-    this.router.navigate(['detail'], {
-      queryParams: { id: articleId.toString() },
-    });
-  }
-
-  /**
    * ページング処理
    * @param number
    */
