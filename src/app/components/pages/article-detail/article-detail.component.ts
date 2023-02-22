@@ -21,7 +21,6 @@ export class ArticleDetailComponent {
   ngOnInit() {
     window.scrollTo(0, 0);
     this.route.data.subscribe((data) => {
-      console.log(data);
       this.article = data['responseBody'].data;
     });
   }

@@ -93,7 +93,6 @@ export class HomeComponent {
    * @param articleId
    */
   public moveToArticleDetail(articleId: number) {
-    console.log(articleId);
     this.router.navigate(['detail'], {
       queryParams: { id: articleId.toString() },
     });

@@ -14,8 +14,8 @@ export class ArticleResolverService {
   public resolve(
     route: ActivatedRouteSnapshot
   ): Observable<ResponseBody<Article>> {
-    let id = route.queryParams['id'];
-    console.log(id);
-    return this.articleApiService.getArticleDetail(Number(id));
+    return this.articleApiService.getArticleDetail(
+      Number(route.queryParams['id'])
+    );
   }
 }
