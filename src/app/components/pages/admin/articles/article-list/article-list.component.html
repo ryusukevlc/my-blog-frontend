@@ -1,83 +1,116 @@
-<div class="px-4 sm:px-6 lg:px-8">
-  <div class="sm:flex sm:items-center">
-    <div class="sm:flex-auto">
-      <h1 class="text-xl font-semibold text-gray-900">Articles</h1>
-      <p class="mt-2 text-sm text-gray-700">
-        This is the article list. Articles can be created, edited, and deleted
-        from this screen.
-      </p>
-    </div>
-    <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none"></div>
-  </div>
-  <div class="mt-8 flex flex-col">
-    <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
-      <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-        <div
-          class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg"
-        >
-          <table class="min-w-full divide-y divide-gray-300">
-            <thead class="bg-gray-50">
-              <tr>
-                <th
-                  scope="col"
-                  class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
-                >
-                  Title
-                </th>
-                <th
-                  scope="col"
-                  class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                >
-                  Content
-                </th>
-                <th
-                  scope="col"
-                  class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                >
-                  Created Date
-                </th>
-                <th
-                  scope="col"
-                  class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                >
-                  Edited Date
-                </th>
-                <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                  <span class="sr-only">Edit</span>
-                </th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-200 bg-white">
-              <tr *ngFor="let article of articles">
-                <td
-                  class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"
-                >
-                  {{ article.title }}
-                </td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                  {{ article.content }}
-                </td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                  {{ article.created_at }}
-                </td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                  {{ article.updated_at }}
-                </td>
-                <td
-                  class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6"
-                >
-                  <button
-                    (click)="routingService.moveToEditArticle(article.id)"
-                    class="text-indigo-600 hover:text-indigo-900"
-                  >
-                    Edit<span class="sr-only">, Lindsay Walton</span>
-                  </button>
-                </td>
-              </tr>
+<div class="pt-10 bg-white px-6 pb-20 lg:px-8 lg:pb-28 dark:bg-gray-800">
+  <div
+    class="relative mx-auto divide-y-1 divide-gray-200 lg:max-w-7xl px-6 pb-10"
+  >
+    <div class="px-4 sm:px-6 lg:px-8">
+      <div class="sm:flex sm:items-center">
+        <div class="sm:flex-auto">
+          <h1 class="text-xl font-semibold text-gray-900">Articles</h1>
+          <p class="mt-2 text-sm text-gray-700">
+            This is the article list. Articles can be created, edited, and
+            deleted from this screen.
+          </p>
+        </div>
+        <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+          <button
+            (click)="routingService.moveToCreateArticle()"
+            type="button"
+            class="inline-flex items-center rounded-md border border-transparent bg-indigo-100 px-3 py-2 text-sm font-medium leading-4 text-indigo-700 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+          >
+            new Article
+          </button>
+        </div>
+      </div>
+      <div class="mt-8 flex flex-col">
+        <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div
+            class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8"
+          >
+            <div
+              class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg"
+            >
+              <table class="min-w-full divide-y divide-gray-300">
+                <thead class="bg-gray-50">
+                  <tr>
+                    <th
+                      scope="col"
+                      class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
+                    >
+                      Title
+                    </th>
+                    <th
+                      scope="col"
+                      class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                    >
+                      Content
+                    </th>
+                    <th
+                      scope="col"
+                      class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                    >
+                      Created Date
+                    </th>
+                    <th
+                      scope="col"
+                      class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                    >
+                      Edited Date
+                    </th>
+                    <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
+                      <span class="sr-only">Edit</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200 bg-white">
+                  <tr *ngFor="let article of articles">
+                    <td
+                      class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"
+                    >
+                      {{ article.title }}
+                    </td>
+                    <td
+                      class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
+                    >
+                      {{ article.partOfContent }}
+                    </td>
+                    <td
+                      class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
+                    >
+                      {{ article.created_at }}
+                    </td>
+                    <td
+                      class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
+                    >
+                      {{ article.updated_at }}
+                    </td>
+                    <td
+                      class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6"
+                    >
+                      <button
+                        (click)="routingService.moveToEditArticle(article.id)"
+                        class="text-indigo-600 hover:text-indigo-900"
+                      >
+                        Edit<span class="sr-only">, Lindsay Walton</span>
+                      </button>
+                    </td>
+                    <td
+                      class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6"
+                    >
+                      <button
+                        (click)="displayPopup(article.id)"
+                        class="text-indigo-600 hover:text-indigo-900"
+                      >
+                        Delete
+                      </button>
+                      <div #deleteModal></div>
+                    </td>
+                  </tr>
 
-              <!-- More people... -->
-            </tbody>
-          </table>
+                  <!-- More people... -->
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>

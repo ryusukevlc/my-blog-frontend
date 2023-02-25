@@ -52,10 +52,42 @@ export class ArticleApiService {
     });
   }
 
+  public getArticleDetailForEditing(id: number) {
+    return this.http.get<ResponseBody<Article>>(Urls.ARTICLES_URL, {
+      params: new HttpParams()
+        .set('action', 'getDetailForEditing')
+        .set('id', id),
+      reportProgress: true,
+    });
+  }
+
   public getArticleCount() {
     let options = {
       params: new HttpParams().set('action', 'getCount'),
     };
     return this.http.get<ResponseBody<Count>>(Urls.ARTICLES_URL, options);
+  }
+
+  public createArticle(value: Object) {
+    let options = {
+      reportProgress: true,
+    };
+    console.log(value);
+    return this.http.post<ResponseBody<any>>(Urls.ARTICLES_URL, value, options);
+  }
+
+  public updateArticle(value: Object) {
+    let options = {
+      reportProgress: true,
+    };
+    console.log(value);
+    return this.http.post<ResponseBody<any>>(Urls.ARTICLES_URL, value, options);
+  }
+
+  public deleteArticle(articleId: number) {
+    return this.http.post<ResponseBody<any>>(Urls.ARTICLES_URL, {
+      action: 'delete',
+      id: articleId,
+    });
   }
 }

@@ -10,6 +10,7 @@ import { TagsComponent } from './components/pages/admin/tags/tags.component';
 import { ArticleDetailComponent } from './components/pages/article-detail/article-detail.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { ArticleResolverService } from './services/resolver/article-resolver.service';
+import { TagResolverService } from './services/resolver/tag-resolver.service';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -36,11 +37,18 @@ const routes: Routes = [
     path: 'admin/createArticle',
     component: CreateArticleComponent,
     pathMatch: 'full',
+    resolve: {
+      responseBody: TagResolverService,
+    },
   },
   {
     path: 'admin/editArticle',
     component: EditArticleComponent,
     pathMatch: 'full',
+    resolve: {
+      responseBody1: TagResolverService,
+      responseBody2: ArticleResolverService,
+    },
   },
   { path: 'admin/tags', component: TagsComponent, pathMatch: 'full' },
   { path: 'admin/drafts', component: DraftsComponent, pathMatch: 'full' },

@@ -14,7 +14,15 @@ export class ArticleListService {
    * ブログ記事取得
    * @returns
    */
-  public getArticles(...fields: string[]): Observable<object> {
-    return this.articleApiService.getArticles(0, 0, ...fields);
+  public getArticles(
+    offset: number,
+    count: number,
+    ...fields: string[]
+  ): Observable<ResponseBody<Article[]>> {
+    return this.articleApiService.getArticles(offset, count, ...fields);
+  }
+
+  public deleteArticle(id: number) {
+    return this.articleApiService.deleteArticle(id);
   }
 }

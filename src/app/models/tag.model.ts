@@ -3,6 +3,7 @@ export class Tag {
   public name: string;
   public created_at: Date;
   public updated_at: Date;
+  public isSelected: boolean = false;
 
   constructor(id: number, name: string, created_at: Date, updated_at: Date) {
     this.id = id;

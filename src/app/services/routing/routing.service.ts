@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Urls } from 'src/app/constants/urls';
 
 @Injectable({
   providedIn: 'root',
@@ -43,7 +44,7 @@ export class RoutingService {
    * @param articleId
    */
   public moveToEditArticle(articleId: number) {
-    this.router.navigate(['admin/editArticle'], {
+    this.router.navigate([Urls.EDIT_ARTICLE], {
       queryParams: { id: articleId.toString() },
     });
   }
