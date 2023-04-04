@@ -28,7 +28,7 @@ export class HomeComponent {
   // ページ件数
   public pageCount: number;
   // APIから取得するフィールド
-  private fields = ['id', 'title', 'partOfContent', 'created_at'];
+  private fields = ['id', 'title', 'part_of_content', 'created_at'];
   // 何記事目から取得するか決めるオフセット
   private offset: number = 0;
   // 取得する記事の件数
@@ -45,13 +45,10 @@ export class HomeComponent {
     // 記事一覧を取得する
     this.homeService
       .getArticles(0, this.count, ...this.fields)
-      .subscribe((responseBody) => {
-        let articles: Article[] = responseBody.data;
+      .subscribe((articles) => {
         articles.forEach((article) => {
-          // 配列形式の日付をハイフン形式の日付にコンバートする
-          article.created_at = new Datetime().convertJacksonTime(
-            Array.from(article.created_at)
-          );
+          // datetimeから日付部分だけ取得
+          article.createdAt = article.createdAt.substring(0, 10);
         });
         this.articles = articles;
 
@@ -60,8 +57,7 @@ export class HomeComponent {
       });
 
     // 記事（下書き以外）の全件数を取得する
-    this.homeService.getArticleCount().subscribe((responseBody) => {
-      let count: Count = responseBody.data;
+    this.homeService.getArticleCount().subscribe((count) => {
       this.pageCount = Math.ceil(count.allArticleNumbers / this.count);
       this.pageNumberArray = new Array(this.pageCount);
       for (let i = 1; i <= this.pageCount; i++) {
@@ -108,13 +104,10 @@ export class HomeComponent {
         this.count,
         ...this.fields
       )
-      .subscribe((responseBody) => {
-        let articles: Article[] = responseBody.data;
+      .subscribe((articles) => {
         articles.forEach((article) => {
-          // 配列形式の日付をハイフン形式の日付にコンバートする
-          article.created_at = new Datetime().convertJacksonTime(
-            Array.from(article.created_at)
-          );
+          // datetimeから日付部分だけ取得
+          article.createdAt = article.createdAt.substring(0, 10);
         });
         this.articles = articles;
         // スケルトンスクリーンOFF

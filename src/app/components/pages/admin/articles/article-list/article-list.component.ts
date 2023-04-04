@@ -27,8 +27,8 @@ export class ArticleListComponent {
   private fields: string[] = [
     'id',
     'title',
-    'created_at',
-    'updated_at',
+    'createdAt',
+    'updatedAt',
     'writing',
     'partOfContent',
   ];
@@ -37,17 +37,11 @@ export class ArticleListComponent {
     // 記事を全件取得するために第2引数のcountを0に設定している
     this.articleListService
       .getArticles(0, 0, ...this.fields)
-      .subscribe((responseBody) => {
-        let articles = responseBody.data;
+      .subscribe((articles) => {
         articles.forEach((article) => {
-          // 配列形式の日付をハイフン形式の日付にコンバートする
-          article.created_at = new Datetime().convertJacksonTime(
-            Array.from(article.created_at)
-          );
-          if (article.updated_at != undefined || article.updated_at != null) {
-            article.updated_at = new Datetime().convertJacksonTime(
-              Array.from(article.updated_at)
-            );
+          article.createdAt = article.createdAt.substring(0, 10);
+          if (article.updatedAt != undefined || article.updatedAt != null) {
+            article.updatedAt = article.updatedAt.substring(0, 10);
           }
           article.partOfContent = article.partOfContent.slice(0, 50);
         });

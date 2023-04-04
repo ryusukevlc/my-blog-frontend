@@ -25,15 +25,9 @@ export class ArticleDetailComponent {
     window.scrollTo(0, 0);
     this.route.data.subscribe((data) => {
       let article = data['responseBody'].data;
-
-      article.created_at = new Datetime().convertJacksonTime(
-        Array.from(article.created_at)
-      );
-
-      if (article.updated_at != undefined || article.updated_at != null) {
-        article.updated_at = new Datetime().convertJacksonTime(
-          Array.from(article.updated_at)
-        );
+      article.createdAt = article.createdAt.substring(1, 10);
+      if (article.updatedAt != undefined || article.updatedAt != null) {
+        article.updatedAt = article.updatedAt.substring(0, 10);
         this.isupdated = true;
       }
       this.article = article;

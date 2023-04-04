@@ -25,13 +25,10 @@ export class ArticleApiService {
     offset: number,
     count: number,
     ...fields: string[]
-  ): Observable<ResponseBody<Article[]>> {
+  ): Observable<Article[]> {
     // パラメータ
     let options = {
-      params: new HttpParams()
-        .set('action', 'getArticles')
-        .set('offset', offset)
-        .set('count', count),
+      params: new HttpParams().set('offset', offset).set('limit', count),
       reportProgress: true,
     };
     // 取得するフィールドをパラメータにセットする
@@ -39,7 +36,7 @@ export class ArticleApiService {
       options.params = options.params.append('fields', field);
     });
     // httpリクエスト
-    return this.http.get<ResponseBody<Article[]>>(Urls.ARTICLES_URL, options);
+    return this.http.get<Article[]>(Urls.ARTICLES_URL, options);
   }
 
   /**
@@ -62,10 +59,7 @@ export class ArticleApiService {
   }
 
   public getArticleCount() {
-    let options = {
-      params: new HttpParams().set('action', 'getCount'),
-    };
-    return this.http.get<ResponseBody<Count>>(Urls.ARTICLES_URL, options);
+    return this.http.get<Count>(Urls.ARTICLES_COUNT_URL, {});
   }
 
   public createArticle(value: Object) {

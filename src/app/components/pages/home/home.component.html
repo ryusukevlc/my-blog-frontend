@@ -5,7 +5,7 @@
     <div class="grid gap-16 pt-10 grid-cols-1 text-left">
       <div *ngFor="let article of articles" class="">
         <p class="text-sm text-gray-500 dark:text-gray-400">
-          {{ article.created_at }}
+          {{ article.createdAt }}
         </p>
         <button
           (click)="routingService.moveToArticleDetail(article.id)"

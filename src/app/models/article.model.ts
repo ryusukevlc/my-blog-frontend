@@ -4,9 +4,8 @@ export class Article {
   public id: number;
   public title: string;
   public content: string;
-  public created_at: string;
-  public updated_at: string;
-  public thumbnail: string;
+  public createdAt: string;
+  public updatedAt: string;
   public tagList: Tag[];
   public partOfContent: string;
   public allNumbers: number;
@@ -15,9 +14,8 @@ export class Article {
     id: number,
     title: string,
     content: string,
-    created_at: string,
-    updated_at: string,
-    thumbnail: string,
+    createdAt: string,
+    updatedAt: string,
     tagList: Tag[],
     partofContent: string,
     allNumbers: number
@@ -25,9 +23,8 @@ export class Article {
     this.id = id;
     this.title = title;
     this.content = content;
-    this.created_at = created_at;
-    this.updated_at = updated_at;
-    this.thumbnail = thumbnail;
+    this.createdAt = createdAt;
+    this.updatedAt = updatedAt;
     this.tagList = tagList;
     this.partOfContent = partofContent;
     this.allNumbers = allNumbers;

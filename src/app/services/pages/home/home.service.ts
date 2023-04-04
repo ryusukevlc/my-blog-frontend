@@ -18,7 +18,7 @@ export class HomeService {
     offset: number,
     count: number,
     ...fields: string[]
-  ): Observable<ResponseBody<Article[]>> {
+  ): Observable<Article[]> {
     return this.articleApiService.getArticles(offset, count, ...fields);
   }
 
