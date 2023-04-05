@@ -12,9 +12,7 @@ import { Tag } from 'src/app/models/tag.model';
 export class TagResolverService {
   constructor(private tagApiService: TagApiService) {}
 
-  public resolve(
-    route: ActivatedRouteSnapshot
-  ): Observable<ResponseBody<Tag[]>> {
+  public resolve(route: ActivatedRouteSnapshot): Observable<Tag[]> {
     return this.tagApiService.getAllTags();
   }
 }

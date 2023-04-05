@@ -38,7 +38,7 @@ const routes: Routes = [
     component: CreateArticleComponent,
     pathMatch: 'full',
     resolve: {
-      responseBody: TagResolverService,
+      tags: TagResolverService,
     },
   },
   {

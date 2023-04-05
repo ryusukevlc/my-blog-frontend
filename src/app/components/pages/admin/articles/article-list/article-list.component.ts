@@ -27,16 +27,16 @@ export class ArticleListComponent {
   private fields: string[] = [
     'id',
     'title',
-    'createdAt',
-    'updatedAt',
-    'writing',
-    'partOfContent',
+    'created_at',
+    'updated_at',
+    'is_writing',
+    'part_of_content',
   ];
 
   async ngOnInit(): Promise<void> {
     // 記事を全件取得するために第2引数のcountを0に設定している
     this.articleListService
-      .getArticles(0, 0, ...this.fields)
+      .getArticles(0, 10, ...this.fields)
       .subscribe((articles) => {
         articles.forEach((article) => {
           article.createdAt = article.createdAt.substring(0, 10);

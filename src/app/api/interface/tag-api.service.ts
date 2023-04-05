@@ -11,8 +11,8 @@ import { Tag } from 'src/app/models/tag.model';
 export class TagApiService {
   constructor(private http: HttpClient) {}
 
-  public getAllTags(): Observable<ResponseBody<Tag[]>> {
-    return this.http.get<ResponseBody<Tag[]>>(Urls.TAGS_URL, {
+  public getAllTags(): Observable<Tag[]> {
+    return this.http.get<Tag[]>(Urls.TAGS_URL, {
       reportProgress: true,
     });
   }

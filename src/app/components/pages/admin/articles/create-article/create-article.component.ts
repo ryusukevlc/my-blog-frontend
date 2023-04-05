@@ -31,7 +31,7 @@ export class CreateArticleComponent {
 
   ngOnInit() {
     this.route.data.subscribe((data) => {
-      this.tags = data['responseBody'].data;
+      this.tags = data['tags'];
     });
   }
 
