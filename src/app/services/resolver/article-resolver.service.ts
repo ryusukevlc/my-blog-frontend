@@ -12,19 +12,10 @@ import { ResponseBody } from 'src/app/models/response-body.model';
 export class ArticleResolverService {
   constructor(private articleApiService: ArticleApiService) {}
 
-  public resolve(
-    route: ActivatedRouteSnapshot
-  ): Observable<ResponseBody<Article>> {
+  public resolve(route: ActivatedRouteSnapshot): Observable<Article> {
     // 記事詳細表示時
-    if (route.routeConfig?.path == Urls.ARTICLE_DETAIL) {
-      return this.articleApiService.getArticleDetail(
-        Number(route.queryParams['id'])
-      );
-    } else {
-      // 記事編集時
-      return this.articleApiService.getArticleDetailForEditing(
-        Number(route.queryParams['id'])
-      );
-    }
+    return this.articleApiService.getArticleDetail(
+      Number(route.queryParams['id'])
+    );
   }
 }

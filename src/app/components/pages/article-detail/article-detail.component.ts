@@ -24,7 +24,9 @@ export class ArticleDetailComponent {
   ngOnInit() {
     window.scrollTo(0, 0);
     this.route.data.subscribe((data) => {
-      let article = data['responseBody'].data;
+      console.log(data);
+      let article = data['article'];
+      console.log(article);
       article.createdAt = article.createdAt.substring(1, 10);
       if (article.updatedAt != undefined || article.updatedAt != null) {
         article.updatedAt = article.updatedAt.substring(0, 10);

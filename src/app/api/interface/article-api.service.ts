@@ -43,17 +43,7 @@ export class ArticleApiService {
    * ブログ記事詳細取得API
    */
   public getArticleDetail(id: number): Observable<any> {
-    return this.http.get(Urls.ARTICLE_DETAIL_URL, {
-      params: new HttpParams().set('id', id),
-      reportProgress: true,
-    });
-  }
-
-  public getArticleDetailForEditing(id: number) {
-    return this.http.get<ResponseBody<Article>>(Urls.ARTICLES_URL, {
-      params: new HttpParams()
-        .set('action', 'getDetailForEditing')
-        .set('id', id),
+    return this.http.get(Urls.ARTICLES_URL + '/' + id.toString(), {
       reportProgress: true,
     });
   }

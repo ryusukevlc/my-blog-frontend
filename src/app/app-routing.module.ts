@@ -19,7 +19,7 @@ const routes: Routes = [
     component: ArticleDetailComponent,
     pathMatch: 'full',
     resolve: {
-      responseBody: ArticleResolverService,
+      article: ArticleResolverService,
     },
   },
   { path: 'admin/login', component: LoginComponent, pathMatch: 'full' },
