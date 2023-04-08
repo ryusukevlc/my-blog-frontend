@@ -46,8 +46,8 @@ const routes: Routes = [
     component: EditArticleComponent,
     pathMatch: 'full',
     resolve: {
-      responseBody1: TagResolverService,
-      responseBody2: ArticleResolverService,
+      tags: TagResolverService,
+      article: ArticleResolverService,
     },
   },
   { path: 'admin/tags', component: TagsComponent, pathMatch: 'full' },

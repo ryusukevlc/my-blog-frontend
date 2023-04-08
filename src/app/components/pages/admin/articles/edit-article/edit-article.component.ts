@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Article } from 'src/app/models/article.model';
 import { Tag } from 'src/app/models/tag.model';
@@ -15,48 +15,59 @@ export class EditArticleComponent {
   constructor(
     private editArticleService: EditArticleService,
     private routingService: RoutingService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder
   ) {}
 
-  editArticleForm = new FormGroup({
-    id: new FormControl(),
-    action: new FormControl(''),
-    title: new FormControl(''),
-    content: new FormControl(''),
-    tagList: new FormArray([]),
-  });
+  public editArticleForm: FormGroup;
 
-  public action: string = 'edit';
   public tags: Tag[];
   public article: Article;
-  public id: number;
+  public initialSelectedTagIds: number[];
 
   ngOnInit() {
     this.route.data.subscribe((data) => {
-      this.tags = data['responseBody1'].data;
-      this.article = data['responseBody2'].data;
+      this.article = data['article'];
+      this.initialSelectedTagIds = this.article.tagList.map((tag) => tag.id);
+      this.tags = data['tags'];
       console.log(this.article);
-      this.id = this.article.id;
+      console.log(this.initialSelectedTagIds);
+      this.editArticleForm = this.formBuilder.group({
+        title: [''],
+        content: [''],
+        tagList: this.formBuilder.array(
+          // TODO: もともと選択されているタグはtrueでセットするようにする
+          this.tags.map((tag, i) => {
+            let isSelected = false;
+            this.article.tagList.forEach((selectedTag, i) => {
+              selectedTag.id === tag.id ? (isSelected = true) : null;
+            });
+            console.log(this.initialSelectedTagIds.includes(tag.id));
+            this.formBuilder.control(isSelected);
+          })
+        ),
+      });
     });
   }
 
-  public selectOrCancel(id: number, event: any) {
-    let tagList = this.editArticleForm.get('tagList') as FormArray;
-    if (event.target.checked) {
-      tagList.push(new FormControl(id));
-    } else {
-      tagList.removeAt(
-        tagList.controls.findIndex((control) => control.value.id == id)
-      );
-    }
-  }
-
   public onSubmit() {
-    this.editArticleService
-      .updateArticle(this.editArticleForm.value)
-      .subscribe((response) => {
-        console.log(response.status);
-        this.routingService.moveToArticleList();
-      });
+    const selectedTags = this.tags.filter(
+      (_, i) => this.editArticleForm.value.tagList[i]
+    );
+    console.log(selectedTags);
+    console.log(this.tags);
+    console.log(this.editArticleForm.value.tagList);
+
+    const requestBody = {
+      id: this.article.id,
+      title: this.editArticleForm.value.title,
+      content: this.editArticleForm.value.content,
+      tagList: selectedTags,
+    };
+
+    this.editArticleService.updateArticle(requestBody).subscribe(() => {
+      console.log('update完了');
+      this.routingService.moveToArticleList();
+    });
   }
 }

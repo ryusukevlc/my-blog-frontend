@@ -65,7 +65,7 @@ export class ArticleApiService {
       reportProgress: true,
     };
     console.log(value);
-    return this.http.post<ResponseBody<any>>(Urls.ARTICLES_URL, value, options);
+    return this.http.patch<Article>(Urls.ARTICLES_URL, value, options);
   }
 
   public deleteArticle(articleId: number) {

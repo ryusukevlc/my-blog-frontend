@@ -3,8 +3,6 @@
     class="relative mx-auto divide-y-1 divide-gray-200 lg:max-w-5xl px-6 pb-10"
   >
     <form [formGroup]="editArticleForm" (ngSubmit)="onSubmit()">
-      <input type="hidden" [ngModel]="id" formControlName="id" />
-      <input type="hidden" [ngModel]="action" formControlName="action" />
       <div>
         <div
           class="flex items-center"
@@ -129,12 +127,13 @@
           </div>
         </div>
       </div>
-      <div class="my-3">
-        <div *ngFor="let tag of tags" formArrayName="tagList">
+      <div class="my-3" formArrayName="tagList">
+        <div *ngFor="let tag of tags; let i = index">
           <input
             type="checkbox"
             [id]="tag.id"
-            (change)="selectOrCancel(tag.id, $event)"
+            [formControlName]="i"
+            [ngModel]="this.initialSelectedTagIds.includes(tag.id)"
           />
           <label [for]="tag.id">{{ tag.name }}</label>
         </div>
