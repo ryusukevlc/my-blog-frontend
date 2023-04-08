@@ -57,7 +57,7 @@ export class ArticleApiService {
       reportProgress: true,
     };
     console.log(value);
-    return this.http.post<ResponseBody<any>>(Urls.ARTICLES_URL, value, options);
+    return this.http.post<Article>(Urls.ARTICLES_URL, value, options);
   }
 
   public updateArticle(value: Object) {

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Article } from 'src/app/models/article.model';
 import { Tag } from 'src/app/models/tag.model';
@@ -15,43 +15,43 @@ export class CreateArticleComponent {
   constructor(
     private route: ActivatedRoute,
     private createArticleService: CreateArticleService,
-    private routingService: RoutingService
+    private routingService: RoutingService,
+    private formBuilder: FormBuilder
   ) {}
 
-  createArticleForm = new FormGroup({
-    action: new FormControl(''),
-    title: new FormControl(''),
-    content: new FormControl(''),
-    tagList: new FormArray([]),
-  });
-
-  public action: string = 'create';
+  public createArticleForm: FormGroup;
   public tags: Tag[];
-  public selectedTagIds: number[] = new Array();
 
   ngOnInit() {
     this.route.data.subscribe((data) => {
       this.tags = data['tags'];
+      this.createArticleForm = this.formBuilder.group({
+        title: [''],
+        content: [''],
+        tagList: this.formBuilder.array(
+          this.tags.map(() => this.formBuilder.control(false))
+        ),
+      });
+      console.log('終了');
     });
   }
 
-  public selectOrCancel(id: number, event: any) {
-    let tagList = this.createArticleForm.get('tagList') as FormArray;
-    if (event.target.checked) {
-      tagList.push(new FormControl(id));
-    } else {
-      tagList.removeAt(
-        tagList.controls.findIndex((control) => control.value.id == id)
-      );
-    }
-  }
-
   public onSubmit() {
+    const selectedTags = this.tags.filter(
+      (_: Tag, i: number) => this.createArticleForm.value.tagList[i]
+    );
+    console.log(selectedTags);
+
+    const requestBody = {
+      title: this.createArticleForm.value.title,
+      content: this.createArticleForm.value.content,
+      tagList: selectedTags,
+    };
+
     this.createArticleService
-      .createArticle(this.createArticleForm.value)
-      .subscribe((response) => {
-        let status = response.status;
-        console.log(status);
+      .createArticle(requestBody)
+      .subscribe((article) => {
+        console.log(article);
         this.routingService.moveToArticleList();
       });
   }
