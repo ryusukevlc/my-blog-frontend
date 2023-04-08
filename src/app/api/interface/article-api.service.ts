@@ -69,9 +69,9 @@ export class ArticleApiService {
   }
 
   public deleteArticle(articleId: number) {
-    return this.http.post<ResponseBody<any>>(Urls.ARTICLES_URL, {
-      action: 'delete',
-      id: articleId,
-    });
+    return this.http.delete<void>(
+      Urls.ARTICLES_URL + '/' + articleId.toString(),
+      {}
+    );
   }
 }

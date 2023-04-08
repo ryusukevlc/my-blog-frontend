@@ -61,8 +61,7 @@ export class ArticleListComponent {
 
   public deleteArticle(id: number) {
     console.log('削除メソッドを呼びました');
-    this.articleListService.deleteArticle(id).subscribe((responseBody) => {
-      console.log(responseBody.status);
+    this.articleListService.deleteArticle(id).subscribe(() => {
       location.reload();
       alert('削除しました');
     });
