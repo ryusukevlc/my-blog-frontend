@@ -13,9 +13,18 @@ export class ArticleResolverService {
   constructor(private articleApiService: ArticleApiService) {}
 
   public resolve(route: ActivatedRouteSnapshot): Observable<Article> {
-    // 記事詳細表示時
-    return this.articleApiService.getArticleDetail(
-      Number(route.queryParams['id'])
-    );
+    console.log(route.routeConfig?.path);
+    if (route.routeConfig?.path == 'admin/editArticle') {
+      // 記事編集時はmarkdownで表示するため、isMarkdownをtrueにする
+      return this.articleApiService.getArticleDetail(
+        Number(route.queryParams['id']),
+        true
+      );
+    } else {
+      // 記事詳細表示時
+      return this.articleApiService.getArticleDetail(
+        Number(route.queryParams['id'])
+      );
+    }
   }
 }

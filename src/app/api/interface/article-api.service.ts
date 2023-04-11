@@ -42,10 +42,19 @@ export class ArticleApiService {
   /**
    * ブログ記事詳細取得API
    */
-  public getArticleDetail(id: number): Observable<any> {
-    return this.http.get(Urls.ARTICLES_URL + '/' + id.toString(), {
+  public getArticleDetail(
+    id: number,
+    isMarkdown: boolean = false
+  ): Observable<any> {
+    let options = {
+      params: new HttpParams(),
       reportProgress: true,
-    });
+    };
+    if (isMarkdown) {
+      options.params = options.params.append('markdown', true);
+    }
+
+    return this.http.get(Urls.ARTICLES_URL + '/' + id.toString(), options);
   }
 
   public getArticleCount() {

@@ -10,6 +10,7 @@ import { CreateArticleComponent } from './admin/articles/create-article/create-a
 import { ArticleListComponent } from './admin/articles/article-list/article-list.component';
 import { TagsComponent } from './admin/tags/tags.component';
 import { DraftsComponent } from './admin/drafts/drafts.component';
+import { AppModule } from 'src/app/app.module';
 
 @NgModule({
   declarations: [
