@@ -22,7 +22,7 @@ export class HomeComponent {
   // 記事一覧
   public articles: Article[];
   // ページ番号の配列
-  public pageNumberArray: number[];
+  public pageNumberArray: number[] = [];
   // 現在表示しているページの番号
   public selectedNumber: number = 1;
   // ページ件数
@@ -59,9 +59,9 @@ export class HomeComponent {
     // 記事（下書き以外）の全件数を取得する
     this.homeService.getArticleCount().subscribe((count) => {
       this.pageCount = Math.ceil(count.allArticleNumbers / this.count);
-      this.pageNumberArray = new Array(this.pageCount);
+      this.pageNumberArray = [];
       for (let i = 1; i <= this.pageCount; i++) {
-        this.pageNumberArray[i] = i;
+        this.pageNumberArray[i - 1] = i;
       }
     });
   }

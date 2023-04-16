@@ -11,6 +11,7 @@ import { ArticleDetailComponent } from './components/pages/article-detail/articl
 import { HomeComponent } from './components/pages/home/home.component';
 import { ArticleResolverService } from './services/resolver/article-resolver.service';
 import { TagResolverService } from './services/resolver/tag-resolver.service';
+import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -52,6 +53,11 @@ const routes: Routes = [
   },
   { path: 'admin/tags', component: TagsComponent, pathMatch: 'full' },
   { path: 'admin/drafts', component: DraftsComponent, pathMatch: 'full' },
+  {
+    path: '**',
+    component: PageNotFoundComponent,
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({

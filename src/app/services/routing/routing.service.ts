@@ -33,6 +33,14 @@ export class RoutingService {
   }
 
   /**
+   * 記事詳細画面に遷移する
+   * @param articleId
+   */
+  public moveToAdminPortal() {
+    this.router.navigate(['admin/portal'], {});
+  }
+
+  /**
    * 記事作成画面に遷移する
    */
   public moveToCreateArticle() {
