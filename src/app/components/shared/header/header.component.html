@@ -9,7 +9,7 @@
           <i class="text-2xl h-8 w-auto sm:h-10 fa-solid fa-mountain-sun"></i>
         </a>
       </div>
-      <div class="-my-2 -mr-2 md:hidden">
+      <div class="-my-2 -mr-2 md:hidden" #hamburgerMenuButton>
         <button
           (click)="toggleHamburgerMenu()"
           type="button"
@@ -89,6 +89,7 @@
   <div
     *ngIf="isOpened"
     class="z-10 absolute inset-x-0 top-0 origin-top-right transform p-2 transition md:hidden"
+    #hamburgerMenu
   >
     <div
       class="divide-y-2 divide-gray-50 dark:divide-gray-500 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-gray-800"
