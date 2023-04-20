@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LoginApiService } from 'src/app/api/interface/login-api.service';
-import { LoginInfo } from 'src/app/models/login-info.model';
+import { credentials } from 'src/app/models/credentials.model';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +8,7 @@ import { LoginInfo } from 'src/app/models/login-info.model';
 export class LoginService {
   constructor(private loginApiService: LoginApiService) {}
 
-  public getLoginInfo(loginInfo: LoginInfo) {
-    this.loginApiService.getLoginInfo(loginInfo.email, loginInfo.password);
+  public authentication(credentials: credentials) {
+    return this.loginApiService.authentication(credentials);
   }
 }

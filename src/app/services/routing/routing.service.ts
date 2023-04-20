@@ -16,6 +16,14 @@ export class RoutingService {
   }
 
   /**
+   * 管理者ポータル画面に遷移する
+   *
+   */
+  public moveToPortal() {
+    this.router.navigate(['admin/portal']);
+  }
+
+  /**
    * 記事一覧画面に遷移する
    */
   public moveToArticleList() {
