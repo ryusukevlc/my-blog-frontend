@@ -14,7 +14,7 @@ export class LoginComponent {
     private routingService: RoutingService
   ) {}
 
-  public credentials: credentials;
+  public credentials: credentials = new credentials();
 
   public errorMessage: string;
 
