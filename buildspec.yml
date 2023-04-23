@@ -14,5 +14,4 @@ phases:
       - echo Build ended on `date`
 artifacts:
   files:
-    - "**/*"
-  base-directory: "dist*"
+    - "dist/my-blog-frontend/*"
