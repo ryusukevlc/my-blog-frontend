@@ -15,4 +15,4 @@ phases:
 artifacts:
   files:
     - "dist/my-blog-frontend/*"
-    - discard-paths: yes
+  discard-paths: yes
