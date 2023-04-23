@@ -1,0 +1,125 @@
+<div class="pt-10 px-6 pb-20 lg:pb-28 dark:bg-gray-800">
+  <div
+    class="relative mx-auto divide-y-1 divide-gray-200 lg:max-w-7xl px-6 pb-10 dark:bg-gray-800"
+  >
+    <div class="px-4 sm:px-6 lg:px-8 dark:bg-gray-800">
+      <div class="sm:flex sm:items-center">
+        <div class="sm:flex-auto">
+          <h1 class="dark:text-gray-50 text-xl font-semibold">Articles</h1>
+          <p class="dark:text-gray-50 mt-2 text-sm">
+            This is the article list. Articles can be created, edited, and
+            deleted from this screen.
+          </p>
+        </div>
+        <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+          <button
+            (click)="routingService.moveToCreateArticle()"
+            type="button"
+            class="inline-flex items-center rounded-md border border-transparent bg-red-100 px-3 py-2 text-sm font-medium leading-4 text-red-700 hover:bg-red-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+          >
+            new Article
+          </button>
+        </div>
+      </div>
+      <div class="mt-8 flex flex-col">
+        <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div
+            class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8"
+          >
+            <div
+              class="overflow-hidden ring-1 ring-black ring-opacity-5 md:rounded-lg"
+            >
+              <table
+                class="dark:bg-gray-800 min-w-full divide-y divide-gray-300 dark:divide-gray-500"
+              >
+                <thead class="">
+                  <tr>
+                    <th
+                      scope="col"
+                      class="dark:text-gray-50 py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
+                    >
+                      Title
+                    </th>
+                    <th
+                      scope="col"
+                      class="dark:text-gray-50 px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                    >
+                      Content
+                    </th>
+                    <th
+                      scope="col"
+                      class="dark:text-gray-50 px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                    >
+                      Created Date
+                    </th>
+                    <th
+                      scope="col"
+                      class="dark:text-gray-50 px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                    >
+                      Edited Date
+                    </th>
+                    <th
+                      scope="col"
+                      class="dark:text-gray-50 relative py-3.5 pl-3 pr-4 sm:pr-6"
+                    >
+                      <span class="sr-only">Edit</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class="dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-600"
+                >
+                  <tr *ngFor="let article of articles">
+                    <td
+                      class="dark:text-gray-50 whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"
+                    >
+                      {{ article.title.substring(0, 28) }}
+                    </td>
+                    <td
+                      class="dark:text-gray-50 whitespace-nowrap px-3 py-4 text-sm text-gray-500"
+                    >
+                      {{ article.partOfContent }}
+                    </td>
+                    <td
+                      class="dark:text-gray-50 whitespace-nowrap px-3 py-4 text-sm text-gray-500"
+                    >
+                      {{ article.createdAt }}
+                    </td>
+                    <td
+                      class="dark:text-gray-50 whitespace-nowrap px-3 py-4 text-sm text-gray-500"
+                    >
+                      {{ article.updatedAt }}
+                    </td>
+                    <td
+                      class="dark:text-gray-50 relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6"
+                    >
+                      <button
+                        (click)="routingService.moveToEditArticle(article.id)"
+                        class="text-red-500 hover:text-red-900"
+                      >
+                        Edit<span class="sr-only">, Lindsay Walton</span>
+                      </button>
+                    </td>
+                    <td
+                      class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6"
+                    >
+                      <button
+                        (click)="displayPopup(article.id)"
+                        class="text-red-500 hover:text-red-900"
+                      >
+                        Delete
+                      </button>
+                      <div #deleteModal></div>
+                    </td>
+                  </tr>
+
+                  <!-- More people... -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

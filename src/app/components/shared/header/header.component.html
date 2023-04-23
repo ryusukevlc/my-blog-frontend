@@ -1,0 +1,175 @@
+<div class="relative bg-white dark:bg-gray-800">
+  <div class="mx-auto max-w-5xl px-6">
+    <div
+      class="flex items-center justify-between border-b-2 border-gray-100 dark:border-gray-500 py-6 md:justify-start md:space-x-10"
+    >
+      <div class="flex justify-start lg:w-0 lg:flex-1 text-red-500">
+        <a (click)="routingService.moveToHome()" class="cursor-pointer">
+          <span class="sr-only">Your Company</span>
+          <i class="text-2xl h-8 w-auto sm:h-10 fa-solid fa-mountain-sun"></i>
+        </a>
+      </div>
+      <div class="-my-2 -mr-2 md:hidden" #hamburgerMenuButton>
+        <button
+          (click)="toggleHamburgerMenu()"
+          type="button"
+          class="dark:text-gray-400 dark:bg-gray-800 inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-red-500"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Open menu</span>
+          <svg
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+        </button>
+      </div>
+      <nav class="hidden space-x-10 md:flex">
+        <a
+          href="#"
+          class="text-base font-medium text-gray-500 hover:text-gray-900 dark:text-gray-50 dark:hover:text-gray-400"
+          >Tech</a
+        >
+        <a
+          href="#"
+          class="text-base font-medium text-gray-500 hover:text-gray-900 dark:text-gray-50 dark:hover:text-gray-400"
+          >General</a
+        >
+        <a
+          href="#"
+          class="text-base font-medium text-gray-500 hover:text-gray-900 dark:text-gray-50 dark:hover:text-gray-400"
+          >Contact</a
+        >
+        <a
+          href="#"
+          class="text-base font-medium text-gray-500 hover:text-gray-900 dark:text-gray-50 dark:hover:text-gray-400"
+          >About</a
+        >
+      </nav>
+      <div class="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
+        <button
+          (click)="toggleDarkMode()"
+          type="button"
+          [ngClass]="isDarkMode ? 'bg-red-600' : 'bg-gray-200'"
+          class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out"
+          role="switch"
+          aria-checked="false"
+        >
+          <span class="sr-only">Use setting</span>
+          <!-- Enabled: "translate-x-5", Not Enabled: "translate-x-0" -->
+          <span
+            [ngClass]="isDarkMode ? 'translate-x-5' : 'translate-x-0'"
+            aria-hidden="true"
+            class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"
+          ></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!--
+    Mobile menu, show/hide based on mobile menu state.
+
+    Entering: "duration-200 ease-out"
+      From: "opacity-0 scale-95"
+      To: "opacity-100 scale-100"
+    Leaving: "duration-100 ease-in"
+      From: "opacity-100 scale-100"
+      To: "opacity-0 scale-95"
+  -->
+  <div
+    *ngIf="isOpened"
+    class="z-10 absolute inset-x-0 top-0 origin-top-right transform p-2 transition md:hidden"
+    #hamburgerMenu
+  >
+    <div
+      class="divide-y-2 divide-gray-50 dark:divide-gray-500 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-gray-800"
+    >
+      <div class="px-5 pt-5 pb-6">
+        <div class="flex items-center justify-between">
+          <div class="text-red-500">
+            <i class="text-2xl h-8 w-auto sm:h-10 fa-solid fa-mountain-sun"></i>
+          </div>
+          <div class="mr-2">
+            <button
+              (click)="toggleHamburgerMenu()"
+              type="button"
+              class="dark:bg-gray-800 inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-red-500"
+            >
+              <span class="sr-only">Close menu</span>
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="space-y-6 py-6 px-5">
+        <div class="grid grid-cols-2 gap-y-4 gap-x-8">
+          <a
+            href="#"
+            class="text-base font-medium text-gray-900 hover:text-gray-700 dark:text-gray-50 dark:hover:text-gray-400"
+            >Tech</a
+          >
+
+          <a
+            href="#"
+            class="text-base font-medium text-gray-900 hover:text-gray-700 dark:text-gray-50 dark:hover:text-gray-400"
+            >General</a
+          >
+
+          <a
+            href="#"
+            class="text-base font-medium text-gray-900 hover:text-gray-700 dark:text-gray-50 dark:hover:text-gray-400"
+            >Contact</a
+          >
+
+          <a
+            href="#"
+            class="text-base font-medium text-gray-900 hover:text-gray-700 dark:text-gray-50 dark:hover:text-gray-400"
+            >About</a
+          >
+        </div>
+        <div>
+          <!-- Enabled: "bg-red-600", Not Enabled: "bg-gray-200" -->
+          <button
+            (click)="toggleDarkMode()"
+            type="button"
+            [ngClass]="isDarkMode ? 'bg-red-600' : 'bg-gray-200'"
+            class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none"
+            role="switch"
+            aria-checked="false"
+          >
+            <span class="sr-only">Use setting</span>
+            <!-- Enabled: "translate-x-5", Not Enabled: "translate-x-0" -->
+            <span
+              aria-hidden="true"
+              [ngClass]="isDarkMode ? 'translate-x-5' : 'translate-x-0'"
+              class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"
+            ></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
