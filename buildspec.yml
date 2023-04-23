@@ -9,9 +9,10 @@ phases:
       - npm install --save-dev @angular-devkit/build-angular
       - npm install -g @angular/cli
   build:
-    - echo Build started on `date`
-    - ng build
-    - echo Build ended on `date`
+    commands:
+      - echo Build started on `date`
+      - ng build
+      - echo Build ended on `date`
 artifacts:
   files:
     - "**/*"
