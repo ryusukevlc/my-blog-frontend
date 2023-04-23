@@ -15,4 +15,5 @@ phases:
 artifacts:
   files:
     - "dist/my-blog-frontend/*"
+  name: app-$(date +%Y-%m-%d)
   discard-paths: yes
