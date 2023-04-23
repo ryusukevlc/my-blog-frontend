@@ -2,12 +2,10 @@ version: 0.2
 
 phases:
   install:
-    runtime-version:
+    runtime-versions:
       nodejs: 16
     commands:
-      - npm install -g
-      - npm install --save-dev @angular-devkit/build-angular
-      - npm install -g @angular/cli
+      - npm install
   build:
     commands:
       - echo Build started on `date`
