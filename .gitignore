@@ -40,7 +40,3 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
-
-# components
-src/app/constants/urls.ts
-src/app/constants/urls.spec.ts
