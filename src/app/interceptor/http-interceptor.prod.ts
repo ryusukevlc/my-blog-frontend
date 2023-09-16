@@ -16,25 +16,19 @@ export class httpInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    // req.urlはreadonlyのためそのまま上書きすることができない。
-    // そのため、reqをクローンしてurlを上書きするようにした。
-    const cloneReq = req.clone({ url: req.url + '.json' });
-
     nProgress.configure({ showSpinner: false });
-
     if (req.reportProgress) {
-      // プログレスバー開始
       nProgress.start();
-
-      return next.handle(cloneReq).pipe(
-        tap((event: HttpEvent<any>) => {}),
+      return next.handle(req).pipe(
+        tap((event: HttpEvent<any>) => {
+          // if (event.type == HttpEventType.Response) {}
+        }),
         finalize(() => {
-          // プログレスバー完了
           nProgress.done();
         })
       );
     } else {
-      return next.handle(cloneReq);
+      return next.handle(req);
     }
   }
 }
