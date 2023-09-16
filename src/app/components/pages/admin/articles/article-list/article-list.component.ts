@@ -50,7 +50,7 @@ export class ArticleListComponent {
   }
 
   public displayPopup(id: number) {
-    let result = confirm('削除しますか?');
+    const result = confirm('削除しますか?');
     if (result) {
       console.log('削除ボタンを押しました');
       this.deleteArticle(id);

@@ -27,7 +27,7 @@ export class ArticleApiService {
     ...fields: string[]
   ): Observable<Article[]> {
     // パラメータ
-    let options = {
+    const options = {
       params: new HttpParams().set('offset', offset).set('limit', count),
       reportProgress: true,
     };
@@ -46,7 +46,7 @@ export class ArticleApiService {
     id: number,
     isMarkdown: boolean = false
   ): Observable<any> {
-    let options = {
+    const options = {
       params: new HttpParams(),
       reportProgress: true,
     };
@@ -62,7 +62,7 @@ export class ArticleApiService {
   }
 
   public createArticle(value: Object) {
-    let options = {
+    const options = {
       reportProgress: true,
     };
     console.log(value);
@@ -70,7 +70,7 @@ export class ArticleApiService {
   }
 
   public updateArticle(value: Object) {
-    let options = {
+    const options = {
       reportProgress: true,
     };
     console.log(value);

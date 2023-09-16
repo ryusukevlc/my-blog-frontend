@@ -25,7 +25,7 @@ export class ArticleDetailComponent {
     window.scrollTo(0, 0);
     this.route.data.subscribe((data) => {
       console.log(data);
-      let article = data['article'];
+      const article = data['article'];
       console.log(article);
       article.createdAt = article.createdAt.substring(0, 10);
       if (article.updatedAt != undefined || article.updatedAt != null) {
