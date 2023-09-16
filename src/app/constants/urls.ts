@@ -1,8 +1,12 @@
 import { environment } from 'src/environments/environment';
 
 export class Urls {
-  //APIエンドポイント
+  // APIエンドポイント
   private static readonly API_URL = environment.apiEndpoint;
+
+  // -----------------------------------------------------------------
+  // API名
+  // -----------------------------------------------------------------
 
   //ブログ記事API
   private static readonly ARTICLES = '/articles';
@@ -19,7 +23,12 @@ export class Urls {
   //ログインAPI
   private static readonly LOGIN = '/login';
 
-  public static readonly EDIT_ARTICLE = 'admin/editArticle';
+  // 記事編集API
+  private static readonly EDIT_ARTICLE = 'admin/editArticle';
+
+  // -----------------------------------------------------------------
+  // URL
+  // -----------------------------------------------------------------
 
   //ブログ記事URL
   public static readonly ARTICLES_URL = this.API_URL + this.ARTICLES;
@@ -31,7 +40,7 @@ export class Urls {
   //ブログ記事詳細URL
   public static readonly ARTICLE_URL = this.API_URL + this.ARTICLE;
 
-  //ブログ記事詳細URL
+  //タグURL
   public static readonly TAGS_URL = this.API_URL + this.TAGS;
 
   //ログインURL
