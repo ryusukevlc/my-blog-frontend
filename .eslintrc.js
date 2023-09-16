@@ -23,5 +23,7 @@ module.exports = {
   plugins: ["@typescript-eslint"],
   rules: {
     "spaced-comment": ["warn", "always"],
+    "@typescript-eslint/no-unused-vars": ["off"],
+    "@typescript-eslint/no-explicit-any": ["off"],
   },
 };
