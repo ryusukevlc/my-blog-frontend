@@ -1,15 +1,9 @@
 import {
   Component,
-  ComponentFactory,
-  ComponentFactoryResolver,
-  resolveForwardRef,
-  ViewChild,
-  ViewContainerRef,
 } from '@angular/core';
 import { Article } from 'src/app/models/article.model';
 import { ArticleListService } from 'src/app/services/pages/admin/article-list/article-list.service';
 import { RoutingService } from 'src/app/services/routing/routing.service';
-import { Datetime } from 'src/app/util/Datetime';
 
 @Component({
   selector: 'app-article-list',

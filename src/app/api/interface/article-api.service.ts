@@ -1,10 +1,9 @@
-import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Urls } from 'src/app/constants/urls';
 import { Article } from 'src/app/models/article.model';
-import { ResponseBody } from 'src/app/models/response-body.model';
-import { HttpParams } from '@angular/common/http';
-import { Observable, Subscription } from 'rxjs';
 import { Count } from 'src/app/models/count.model';
 
 @Injectable({

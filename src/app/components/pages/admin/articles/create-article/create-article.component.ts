@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Article } from 'src/app/models/article.model';
 import { Tag } from 'src/app/models/tag.model';
 import { CreateArticleService } from 'src/app/services/pages/admin/create-article/create-article.service';
 import { RoutingService } from 'src/app/services/routing/routing.service';

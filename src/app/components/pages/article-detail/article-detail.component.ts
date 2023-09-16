@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Article } from 'src/app/models/article.model';
-import { ArticleDetailService } from 'src/app/services/pages/article-detail/article-detail.service';
-import { Datetime } from 'src/app/util/Datetime';
 
 @Component({
   selector: 'app-article-detail',

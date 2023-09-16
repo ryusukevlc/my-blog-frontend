@@ -5,8 +5,8 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { finalize, Observable, tap } from 'rxjs';
 import * as nProgress from 'nprogress';
+import { finalize, Observable, tap } from 'rxjs';
 
 @Injectable()
 export class httpInterceptor implements HttpInterceptor {
