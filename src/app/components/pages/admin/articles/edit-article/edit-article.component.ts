@@ -30,8 +30,6 @@ export class EditArticleComponent {
       this.article = data['article'];
       this.initialSelectedTagIds = this.article.tagList.map((tag) => tag.id);
       this.tags = data['tags'];
-      console.log(this.article);
-      console.log(this.initialSelectedTagIds);
       this.editArticleForm = this.formBuilder.group({
         title: [''],
         content: [''],
@@ -42,7 +40,6 @@ export class EditArticleComponent {
             this.article.tagList.forEach((selectedTag, i) => {
               selectedTag.id === tag.id ? (isSelected = true) : null;
             });
-            console.log(this.initialSelectedTagIds.includes(tag.id));
             this.formBuilder.control(isSelected);
           })
         ),
@@ -54,9 +51,6 @@ export class EditArticleComponent {
     const selectedTags = this.tags.filter(
       (_, i) => this.editArticleForm.value.tagList[i]
     );
-    console.log(selectedTags);
-    console.log(this.tags);
-    console.log(this.editArticleForm.value.tagList);
 
     const requestBody = {
       id: this.article.id,
@@ -66,7 +60,6 @@ export class EditArticleComponent {
     };
 
     this.editArticleService.updateArticle(requestBody).subscribe(() => {
-      console.log('update完了');
       this.routingService.moveToArticleList();
     });
   }

@@ -31,7 +31,6 @@ export class CreateArticleComponent {
           this.tags.map(() => this.formBuilder.control(false))
         ),
       });
-      console.log('終了');
     });
   }
 
@@ -39,7 +38,6 @@ export class CreateArticleComponent {
     const selectedTags = this.tags.filter(
       (_: Tag, i: number) => this.createArticleForm.value.tagList[i]
     );
-    console.log(selectedTags);
 
     const requestBody = {
       title: this.createArticleForm.value.title,
@@ -50,7 +48,6 @@ export class CreateArticleComponent {
     this.createArticleService
       .createArticle(requestBody)
       .subscribe((article) => {
-        console.log(article);
         this.routingService.moveToArticleList();
       });
   }

@@ -64,7 +64,6 @@ export class ArticleApiService {
     const options = {
       reportProgress: true,
     };
-    console.log(value);
     return this.http.post<Article>(Urls.ARTICLES_URL, value, options);
   }
 
@@ -72,7 +71,6 @@ export class ArticleApiService {
     const options = {
       reportProgress: true,
     };
-    console.log(value);
     return this.http.patch<Article>(Urls.ARTICLES_URL, value, options);
   }
 
