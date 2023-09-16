@@ -24,7 +24,7 @@ export class Urls {
   private static readonly LOGIN = '/login';
 
   // 記事編集API
-  private static readonly EDIT_ARTICLE = 'admin/editArticle';
+  public static readonly EDIT_ARTICLE = 'admin/editArticle';
 
   // -----------------------------------------------------------------
   // URL
