@@ -1,3 +1,3 @@
 export const environment = {
-  apiEndpoint: '/mock',
+  apiEndpoint: '/mock/method',
 };
