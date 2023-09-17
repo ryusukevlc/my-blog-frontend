@@ -125,11 +125,24 @@
           </div>
         </div>
       </div>
-      <div class="my-3" formArrayName="tagList">
-        <div *ngFor="let tag of tags; let i = index">
-          <input type="checkbox" [id]="tag.id" [formControlName]="i" />
-          <label [for]="tag.id">{{ tag.name }}</label>
+      <div class="my-3">
+        <div class="relative">
+          <span
+            *ngFor="let tag of tags; let i = index"
+            class="select-none hover:cursor-pointer inline-flex items-center rounded-md mx-2 px-2 py-1 text-xs font-medium ring-1 ring-inset"
+            (click)="clickTag(tag.id)"
+            [ngClass]="
+              selectedTagIds.indexOf(tag.id) === -1
+                ? 'bg-pink-50 ring-pink-700/10 text-pink-700'
+                : 'bg-pink-400/10 ring-pink-400/20 text-pink-400'
+            "
+            >{{ tag.name }}</span
+          >
         </div>
+        <!-- <div *ngFor="let tag of tags; let i = index"> -->
+        <!-- <input type="checkbox" [id]="tag.id" [formControlName]="i" /> -->
+        <!-- <label [for]="tag.id">{{ tag.name }}</label> -->
+        <!-- </div> -->
       </div>
       <div class="mt-2 flex justify-end">
         <button

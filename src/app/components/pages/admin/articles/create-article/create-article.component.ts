@@ -19,30 +19,49 @@ export class CreateArticleComponent {
   ) {}
 
   public createArticleForm: FormGroup;
-  public tags: Tag[];
+  public tags: Tag[] = [];
+  public selectedTagIds: number[] = [];
 
   ngOnInit() {
     this.route.data.subscribe((data) => {
       this.tags = data['tags'];
+      console.log(this.tags);
       this.createArticleForm = this.formBuilder.group({
         title: [''],
         content: [''],
-        tagList: this.formBuilder.array(
-          this.tags.map(() => this.formBuilder.control(false))
-        ),
       });
     });
   }
 
-  public onSubmit() {
-    const selectedTags = this.tags.filter(
-      (_: Tag, i: number) => this.createArticleForm.value.tagList[i]
+  public clickTag(tagId: number) {
+    if (this.selectedTagIds.indexOf(tagId) === -1) {
+      console.log('true');
+      this.addTag(tagId);
+    } else {
+      console.log('false');
+      this.removeTag(tagId);
+    }
+  }
+
+  public addTag(tagId: number): void {
+    this.selectedTagIds.push(tagId);
+  }
+
+  public removeTag(selectedTagId: number): void {
+    this.selectedTagIds = this.selectedTagIds.filter(
+      (tagId) => tagId !== selectedTagId
     );
+  }
+
+  public onSubmit() {
+    // const selectedTags = this.tags.filter(
+    //   (_: Tag, i: number) => this.createArticleForm.value.tagList[i]
+    // );
 
     const requestBody = {
       title: this.createArticleForm.value.title,
       content: this.createArticleForm.value.content,
-      tagList: selectedTags,
+      tagList: this.selectedTagIds,
     };
 
     this.createArticleService
