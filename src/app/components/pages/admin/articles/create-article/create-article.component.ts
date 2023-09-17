@@ -51,10 +51,16 @@ export class CreateArticleComponent {
   }
 
   public onSubmit() {
+    const tagList = [];
+    for (const selectedTagId of this.selectedTagIds) {
+      const tag = this.tags.find((tag) => tag.id === selectedTagId);
+      tagList.push(tag);
+    }
+
     const requestBody = {
       title: this.createArticleForm.value.title,
       content: this.createArticleForm.value.content,
-      tagList: this.selectedTagIds,
+      tagList: tagList,
     };
 
     this.createArticleService.createArticle(requestBody).subscribe(() => {
