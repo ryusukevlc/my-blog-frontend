@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Article } from 'src/app/models/article.model';
-import { ArticleDetailService } from 'src/app/services/pages/article-detail/article-detail.service';
-import { Datetime } from 'src/app/util/Datetime';
 
 @Component({
   selector: 'app-article-detail',
@@ -24,9 +22,7 @@ export class ArticleDetailComponent {
   ngOnInit() {
     window.scrollTo(0, 0);
     this.route.data.subscribe((data) => {
-      console.log(data);
-      let article = data['article'];
-      console.log(article);
+      const article = data['article'];
       article.createdAt = article.createdAt.substring(0, 10);
       if (article.updatedAt != undefined || article.updatedAt != null) {
         article.updatedAt = article.updatedAt.substring(0, 10);

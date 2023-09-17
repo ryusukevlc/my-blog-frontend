@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Article } from 'src/app/models/article.model';
 import { Tag } from 'src/app/models/tag.model';
 import { CreateArticleService } from 'src/app/services/pages/admin/create-article/create-article.service';
 import { RoutingService } from 'src/app/services/routing/routing.service';
@@ -32,7 +31,6 @@ export class CreateArticleComponent {
           this.tags.map(() => this.formBuilder.control(false))
         ),
       });
-      console.log('終了');
     });
   }
 
@@ -40,7 +38,6 @@ export class CreateArticleComponent {
     const selectedTags = this.tags.filter(
       (_: Tag, i: number) => this.createArticleForm.value.tagList[i]
     );
-    console.log(selectedTags);
 
     const requestBody = {
       title: this.createArticleForm.value.title,
@@ -51,7 +48,6 @@ export class CreateArticleComponent {
     this.createArticleService
       .createArticle(requestBody)
       .subscribe((article) => {
-        console.log(article);
         this.routingService.moveToArticleList();
       });
   }

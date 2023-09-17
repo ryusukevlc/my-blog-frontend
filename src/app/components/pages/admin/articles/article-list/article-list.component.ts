@@ -1,15 +1,7 @@
-import {
-  Component,
-  ComponentFactory,
-  ComponentFactoryResolver,
-  resolveForwardRef,
-  ViewChild,
-  ViewContainerRef,
-} from '@angular/core';
+import { Component } from '@angular/core';
 import { Article } from 'src/app/models/article.model';
 import { ArticleListService } from 'src/app/services/pages/admin/article-list/article-list.service';
 import { RoutingService } from 'src/app/services/routing/routing.service';
-import { Datetime } from 'src/app/util/Datetime';
 
 @Component({
   selector: 'app-article-list',
@@ -50,9 +42,8 @@ export class ArticleListComponent {
   }
 
   public displayPopup(id: number) {
-    let result = confirm('削除しますか?');
+    const result = confirm('削除しますか?');
     if (result) {
-      console.log('削除ボタンを押しました');
       this.deleteArticle(id);
     } else {
       console.log('削除しませんでした');
@@ -60,7 +51,6 @@ export class ArticleListComponent {
   }
 
   public deleteArticle(id: number) {
-    console.log('削除メソッドを呼びました');
     this.articleListService.deleteArticle(id).subscribe(() => {
       location.reload();
       alert('削除しました');

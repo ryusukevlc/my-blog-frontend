@@ -1,10 +1,9 @@
-import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Urls } from 'src/app/constants/urls';
 import { Article } from 'src/app/models/article.model';
-import { ResponseBody } from 'src/app/models/response-body.model';
-import { HttpParams } from '@angular/common/http';
-import { Observable, Subscription } from 'rxjs';
 import { Count } from 'src/app/models/count.model';
 
 @Injectable({
@@ -27,7 +26,7 @@ export class ArticleApiService {
     ...fields: string[]
   ): Observable<Article[]> {
     // パラメータ
-    let options = {
+    const options = {
       params: new HttpParams().set('offset', offset).set('limit', count),
       reportProgress: true,
     };
@@ -46,7 +45,7 @@ export class ArticleApiService {
     id: number,
     isMarkdown: boolean = false
   ): Observable<any> {
-    let options = {
+    const options = {
       params: new HttpParams(),
       reportProgress: true,
     };
@@ -62,18 +61,16 @@ export class ArticleApiService {
   }
 
   public createArticle(value: Object) {
-    let options = {
+    const options = {
       reportProgress: true,
     };
-    console.log(value);
     return this.http.post<Article>(Urls.ARTICLES_URL, value, options);
   }
 
   public updateArticle(value: Object) {
-    let options = {
+    const options = {
       reportProgress: true,
     };
-    console.log(value);
     return this.http.patch<Article>(Urls.ARTICLES_URL, value, options);
   }
 

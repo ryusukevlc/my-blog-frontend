@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { ArticleListComponent } from './components/pages/admin/articles/article-list/article-list.component';
 import { CreateArticleComponent } from './components/pages/admin/articles/create-article/create-article.component';
 import { EditArticleComponent } from './components/pages/admin/articles/edit-article/edit-article.component';
@@ -9,9 +10,9 @@ import { PortalComponent } from './components/pages/admin/portal/portal.componen
 import { TagsComponent } from './components/pages/admin/tags/tags.component';
 import { ArticleDetailComponent } from './components/pages/article-detail/article-detail.component';
 import { HomeComponent } from './components/pages/home/home.component';
+import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
 import { ArticleResolverService } from './services/resolver/article-resolver.service';
 import { TagResolverService } from './services/resolver/tag-resolver.service';
-import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },

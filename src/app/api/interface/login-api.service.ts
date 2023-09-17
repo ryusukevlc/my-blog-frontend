@@ -11,7 +11,7 @@ export class LoginApiService {
   constructor(private httpClient: HttpClient) {}
 
   public getLoginInfo(email: string, password: string) {
-    let url: URL = new URL(Urls.LOGIN_URL);
+    const url: URL = new URL(Urls.LOGIN_URL);
     url.searchParams.append('email', email);
     url.searchParams.append('password', password);
 
