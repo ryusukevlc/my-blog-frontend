@@ -23,40 +23,66 @@ export class EditArticleComponent {
 
   public tags: Tag[];
   public article: Article;
-  public initialSelectedTagIds: number[];
+  public selectedTagIds: number[];
 
   ngOnInit() {
     this.route.data.subscribe((data) => {
       this.article = data['article'];
-      this.initialSelectedTagIds = this.article.tagList.map((tag) => tag.id);
+      this.selectedTagIds = this.article.tagList.map((tag) => tag.id);
       this.tags = data['tags'];
       this.editArticleForm = this.formBuilder.group({
         title: [''],
         content: [''],
-        tagList: this.formBuilder.array(
-          // TODO: もともと選択されているタグはtrueでセットするようにする
-          this.tags.map((tag, i) => {
-            let isSelected = false;
-            this.article.tagList.forEach((selectedTag, i) => {
-              selectedTag.id === tag.id ? (isSelected = true) : null;
-            });
-            this.formBuilder.control(isSelected);
-          })
-        ),
       });
     });
   }
 
-  public onSubmit() {
-    const selectedTags = this.tags.filter(
-      (_, i) => this.editArticleForm.value.tagList[i]
+  /**
+   * タグクリック時の処理
+   *
+   * @param tagId タグID
+   * @returns void
+   */
+  public clickTag(tagId: number): void {
+    if (this.selectedTagIds.indexOf(tagId) === -1) {
+      this.addTag(tagId);
+    } else {
+      this.removeTag(tagId);
+    }
+  }
+
+  /**
+   * タグを選択済みリストに追加する
+   *
+   * @param tagId タグID
+   */
+  public addTag(tagId: number): void {
+    this.selectedTagIds.push(tagId);
+  }
+
+  /**
+   * タグを選択済みリストから除外する
+   *
+   * @param selectedTagId 選択済みのタグID
+   */
+  public removeTag(selectedTagId: number): void {
+    this.selectedTagIds = this.selectedTagIds.filter(
+      (tagId) => tagId !== selectedTagId
     );
+  }
+
+  public onSubmit() {
+    const tagList = [];
+    for (const selectedTagId of this.selectedTagIds) {
+      const tag = this.tags.find((tag) => tag.id === selectedTagId);
+      tagList.push(tag);
+    }
 
     const requestBody = {
       id: this.article.id,
       title: this.editArticleForm.value.title,
       content: this.editArticleForm.value.content,
-      tagList: selectedTags,
+      tagList: tagList,
     };
 
     this.editArticleService.updateArticle(requestBody).subscribe(() => {
