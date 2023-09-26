@@ -7,7 +7,7 @@ import { MarkdownModule } from 'ngx-markdown';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ComponentsModule } from './components/components.module';
-import { httpInterceptor } from './interceptor/http-interceptor';
+import { httpInterceptor } from './core/interceptors/http-interceptor';
 
 @NgModule({
   declarations: [AppComponent],
