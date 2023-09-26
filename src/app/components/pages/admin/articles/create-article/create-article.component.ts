@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Tag } from 'src/app/models/tag.model';
+import { Tag } from 'src/app/core/models/tag.model';
 import { CreateArticleService } from 'src/app/services/pages/admin/create-article/create-article.service';
 import { RoutingService } from 'src/app/services/routing/routing.service';
 

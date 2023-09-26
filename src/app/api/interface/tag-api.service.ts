@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Urls } from 'src/app/constants/urls';
-import { Tag } from 'src/app/models/tag.model';
+import { Tag } from 'src/app/core/models/tag.model';
 
 @Injectable({
   providedIn: 'root',

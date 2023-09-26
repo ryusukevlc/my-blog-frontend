@@ -3,8 +3,8 @@ import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Urls } from 'src/app/constants/urls';
-import { Article } from 'src/app/models/article.model';
-import { Count } from 'src/app/models/count.model';
+import { Article } from 'src/app/core/models/article.model';
+import { Count } from 'src/app/core/models/count.model';
 
 @Injectable({
   providedIn: 'root',
