@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Urls } from 'src/app/constants/urls';
+import { Urls } from 'src/app/core/constants/urls';
 
 @Injectable({
   providedIn: 'root',

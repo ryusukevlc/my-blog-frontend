@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Urls } from 'src/app/constants/urls';
+import { Urls } from 'src/app/core/constants/urls';
 import { Article } from 'src/app/core/models/article.model';
 import { Count } from 'src/app/core/models/count.model';
 

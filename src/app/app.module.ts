@@ -6,15 +6,17 @@ import { MarkdownModule } from 'ngx-markdown';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ComponentsModule } from './components/components.module';
+import { CoreModule } from './core/core.module';
 import { httpInterceptor } from './core/interceptors/http-interceptor';
+import { FeaturesModule } from './features/features.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ComponentsModule,
+    CoreModule,
+    FeaturesModule,
     HttpClientModule,
     ReactiveFormsModule,
     MarkdownModule,

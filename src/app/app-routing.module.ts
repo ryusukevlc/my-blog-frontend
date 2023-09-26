@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ArticleListComponent } from './components/pages/admin/articles/article-list/article-list.component';
-import { CreateArticleComponent } from './components/pages/admin/articles/create-article/create-article.component';
-import { EditArticleComponent } from './components/pages/admin/articles/edit-article/edit-article.component';
-import { DraftsComponent } from './components/pages/admin/drafts/drafts.component';
-import { LoginComponent } from './components/pages/admin/login/login.component';
-import { PortalComponent } from './components/pages/admin/portal/portal.component';
-import { TagsComponent } from './components/pages/admin/tags/tags.component';
-import { ArticleDetailComponent } from './components/pages/article-detail/article-detail.component';
-import { HomeComponent } from './components/pages/home/home.component';
-import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
 import { ArticleResolverService } from './core/resolvers/article-resolver.service';
 import { TagResolverService } from './core/resolvers/tag-resolver.service';
+import { ArticleListComponent } from './features/admin/articles/article-list/article-list.component';
+import { CreateArticleComponent } from './features/admin/articles/create-article/create-article.component';
+import { EditArticleComponent } from './features/admin/articles/edit-article/edit-article.component';
+import { DraftsComponent } from './features/admin/drafts/drafts.component';
+import { LoginComponent } from './features/admin/login/login.component';
+import { PortalComponent } from './features/admin/portal/portal.component';
+import { TagsComponent } from './features/admin/tags/tags.component';
+import { ArticleDetailComponent } from './features/general/article-detail/article-detail.component';
+import { HomeComponent } from './features/general/home/home.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
