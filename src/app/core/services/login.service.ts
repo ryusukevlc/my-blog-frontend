@@ -7,7 +7,7 @@ import { credentials } from 'src/app/core/models/credentials.model';
 @Injectable({
   providedIn: 'root',
 })
-export class LoginApiService {
+export class LoginService {
   constructor(private httpClient: HttpClient) {}
 
   public getLoginInfo(email: string, password: string) {

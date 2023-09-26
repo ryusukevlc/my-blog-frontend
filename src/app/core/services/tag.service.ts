@@ -7,7 +7,7 @@ import { Tag } from 'src/app/core/models/tag.model';
 @Injectable({
   providedIn: 'root',
 })
-export class TagApiService {
+export class TagService {
   constructor(private http: HttpClient) {}
 
   public getAllTags(): Observable<Tag[]> {

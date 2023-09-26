@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ArticleApiService } from 'src/app/api/interface/article-api.service';
+import { ArticleService } from 'src/app/core/services/article.service';
 import { Article } from 'src/app/core/models/article.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HomeService {
-  constructor(private articleApiService: ArticleApiService) {}
+  constructor(private articleService: ArticleService) {}
 
   /**
    * ブログ記事取得
@@ -18,10 +18,10 @@ export class HomeService {
     count: number,
     ...fields: string[]
   ): Observable<Article[]> {
-    return this.articleApiService.getArticles(offset, count, ...fields);
+    return this.articleService.getArticles(offset, count, ...fields);
   }
 
   public getArticleCount() {
-    return this.articleApiService.getArticleCount();
+    return this.articleService.getArticleCount();
   }
 }

@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { ArticleApiService } from 'src/app/api/interface/article-api.service';
+import { ArticleService } from 'src/app/core/services/article.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CreateArticleService {
-  constructor(private articleApiService: ArticleApiService) {}
+  constructor(private articleService: ArticleService) {}
 
   public createArticle(value: Object) {
-    return this.articleApiService.createArticle(value);
+    return this.articleService.createArticle(value);
   }
 }

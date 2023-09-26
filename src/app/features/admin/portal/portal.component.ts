@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RoutingService } from 'src/app/services/routing/routing.service';
+import { RoutingService } from 'src/app/core/services/routing.service';
 
 @Component({
   selector: 'app-portal',

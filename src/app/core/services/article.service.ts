@@ -9,7 +9,7 @@ import { Count } from 'src/app/core/models/count.model';
 @Injectable({
   providedIn: 'root',
 })
-export class ArticleApiService {
+export class ArticleService {
   constructor(private http: HttpClient) {}
 
   /**

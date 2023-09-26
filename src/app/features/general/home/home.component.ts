@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Article } from 'src/app/core/models/article.model';
-import { HomeService } from 'src/app/services/pages/home/home.service';
-import { RoutingService } from 'src/app/services/routing/routing.service';
+import { ArticleService } from 'src/app/core/services/article.service';
+import { RoutingService } from 'src/app/core/services/routing.service';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +12,7 @@ import { RoutingService } from 'src/app/services/routing/routing.service';
 export class HomeComponent {
   constructor(
     private router: Router,
-    private homeService: HomeService,
+    private articleService: ArticleService,
     public routingService: RoutingService
   ) {}
 
@@ -40,7 +40,7 @@ export class HomeComponent {
     // スケルトンスクリーンON
     this.skeletonScreen = true;
     // 記事一覧を取得する
-    this.homeService
+    this.articleService
       .getArticles(0, this.count, ...this.fields)
       .subscribe((articles) => {
         articles.forEach((article) => {
@@ -54,7 +54,7 @@ export class HomeComponent {
       });
 
     // 記事（下書き以外）の全件数を取得する
-    this.homeService.getArticleCount().subscribe((count) => {
+    this.articleService.getArticleCount().subscribe((count) => {
       this.pageCount = Math.ceil(count.allArticleNumbers / this.count);
       this.pageNumberArray = [];
       for (let i = 1; i <= this.pageCount; i++) {
@@ -95,7 +95,7 @@ export class HomeComponent {
     // 選択したページの番号を保持する
     this.selectedNumber = number;
     // 記事を取得する
-    this.homeService
+    this.articleService
       .getArticles(
         this.count * (this.selectedNumber - 1),
         this.count,

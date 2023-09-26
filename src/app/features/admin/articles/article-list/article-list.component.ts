@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Article } from 'src/app/core/models/article.model';
-import { ArticleListService } from 'src/app/services/pages/admin/article-list/article-list.service';
-import { RoutingService } from 'src/app/services/routing/routing.service';
+import { ArticleService } from 'src/app/core/services/article.service';
+import { RoutingService } from 'src/app/core/services/routing.service';
 
 @Component({
   selector: 'app-article-list',
@@ -10,7 +10,7 @@ import { RoutingService } from 'src/app/services/routing/routing.service';
 })
 export class ArticleListComponent {
   constructor(
-    private articleListService: ArticleListService,
+    private articleService: ArticleService,
     public routingService: RoutingService
   ) {}
 
@@ -27,7 +27,7 @@ export class ArticleListComponent {
 
   async ngOnInit(): Promise<void> {
     // 記事を全件取得するために第2引数のcountを0に設定している
-    this.articleListService
+    this.articleService
       .getArticles(0, 10, ...this.fields)
       .subscribe((articles) => {
         articles.forEach((article) => {
@@ -51,7 +51,7 @@ export class ArticleListComponent {
   }
 
   public deleteArticle(id: number) {
-    this.articleListService.deleteArticle(id).subscribe(() => {
+    this.articleService.deleteArticle(id).subscribe(() => {
       location.reload();
       alert('削除しました');
     });

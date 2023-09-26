@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { ArticleApiService } from 'src/app/api/interface/article-api.service';
+import { ArticleService } from 'src/app/core/services/article.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ArticleDetailService {
-  constructor(private articleApiService: ArticleApiService) {}
+  constructor(private articleService: ArticleService) {}
 }

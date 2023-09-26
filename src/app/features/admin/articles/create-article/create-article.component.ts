@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Tag } from 'src/app/core/models/tag.model';
-import { CreateArticleService } from 'src/app/services/pages/admin/create-article/create-article.service';
-import { RoutingService } from 'src/app/services/routing/routing.service';
+import { ArticleService } from 'src/app/core/services/article.service';
+import { RoutingService } from 'src/app/core/services/routing.service';
 
 @Component({
   selector: 'app-create-article',
@@ -13,7 +13,7 @@ import { RoutingService } from 'src/app/services/routing/routing.service';
 export class CreateArticleComponent {
   constructor(
     private route: ActivatedRoute,
-    private createArticleService: CreateArticleService,
+    private articleService: ArticleService,
     private routingService: RoutingService,
     private formBuilder: FormBuilder
   ) {}
@@ -96,7 +96,7 @@ export class CreateArticleComponent {
       tagList: tagList,
     };
 
-    this.createArticleService.createArticle(requestBody).subscribe(() => {
+    this.articleService.createArticle(requestBody).subscribe(() => {
       this.routingService.moveToArticleList();
     });
   }

@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Article } from 'src/app/core/models/article.model';
 import { Tag } from 'src/app/core/models/tag.model';
-import { EditArticleService } from 'src/app/services/pages/admin/edit-article/edit-article.service';
-import { RoutingService } from 'src/app/services/routing/routing.service';
+import { ArticleService } from 'src/app/core/services/article.service';
+import { RoutingService } from 'src/app/core/services/routing.service';
 
 @Component({
   selector: 'app-edit-article',
@@ -13,7 +13,7 @@ import { RoutingService } from 'src/app/services/routing/routing.service';
 })
 export class EditArticleComponent {
   constructor(
-    private editArticleService: EditArticleService,
+    private articleService: ArticleService,
     private routingService: RoutingService,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder
@@ -85,7 +85,7 @@ export class EditArticleComponent {
       tagList: tagList,
     };
 
-    this.editArticleService.updateArticle(requestBody).subscribe(() => {
+    this.articleService.updateArticle(requestBody).subscribe(() => {
       this.routingService.moveToArticleList();
     });
   }
