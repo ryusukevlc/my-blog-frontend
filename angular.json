@@ -36,8 +36,8 @@
                   "with": "src/environments/environment.prod.ts"
                 },
                 {
-                  "replace": "src/app/interceptor/http-interceptor.ts",
-                  "with": "src/app/interceptor/http-interceptor.prod.ts"
+                  "replace": "src/app/core/interceptors/http-interceptor.ts",
+                  "with": "src/app/core/interceptors/http-interceptor.prod.ts"
                 }
               ],
               "budgets": [

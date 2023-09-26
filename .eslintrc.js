@@ -24,6 +24,7 @@ module.exports = {
     "@typescript-eslint",
     "eslint-plugin-import",
     "eslint-plugin-unused-imports",
+    "html",
   ],
   rules: {
     "spaced-comment": ["warn", "always"],

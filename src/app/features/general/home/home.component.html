@@ -1,0 +1,219 @@
+<div class="bg-white px-2 pb-20 lg:px-8 lg:pb-28 dark:bg-gray-800">
+  <div
+    class="relative mx-auto divide-y-1 divide-gray-200 lg:max-w-5xl px-2 md:px-6 pb-10"
+  >
+    <div class="grid gap-16 pt-10 grid-cols-1 text-left">
+      <div *ngFor="let article of articles" class="group">
+        <p class="text-sm text-gray-500 dark:text-gray-400">
+          {{ article.createdAt }}
+        </p>
+        <button
+          (click)="routingService.moveToArticleDetail(article.id)"
+          class="mt-2 block"
+        >
+          <p
+            class="text-xl font-semibold text-gray-900 dark:text-gray-50 text-left hover:underline w-fit"
+          >
+            {{ article.title }}
+          </p>
+          <p class="mt-3 text-base text-gray-500 dark:text-gray-400 text-left">
+            {{ article.partOfContent }}...
+          </p>
+        </button>
+        <div class="mt-3">
+          <button
+            (click)="routingService.moveToArticleDetail(article.id)"
+            class="text-base font-semibold text-red-600 hover:text-red-400"
+          >
+            Read more
+          </button>
+        </div>
+      </div>
+      <!-- スケルトンスクリーン -->
+      <div
+        class="grid gap-16 pt-10 grid-cols-1 dark:opacity-10"
+        [class.hidden]="!skeletonScreen"
+      >
+        <div class="animate-pulse flex space-x-4">
+          <div class="flex-1 space-y-3 py-1">
+            <div class="grid grid-cols-4">
+              <div class="h-2 bg-slate-200 rounded col-span-1"></div>
+            </div>
+            <div class="grid grid-cols-4">
+              <div class="h-2 bg-slate-200 rounded col-span-2"></div>
+            </div>
+            <div class="h-2 bg-slate-200 rounded"></div>
+            <div class="h-2 bg-slate-200 rounded"></div>
+            <div class="grid grid-cols-6">
+              <div class="h-2 bg-slate-200 rounded col-span-1"></div>
+            </div>
+          </div>
+        </div>
+        <div class="animate-pulse flex space-x-4">
+          <div class="flex-1 space-y-3 py-1">
+            <div class="grid grid-cols-4">
+              <div class="h-2 bg-slate-200 rounded col-span-1"></div>
+            </div>
+            <div class="grid grid-cols-4">
+              <div class="h-2 bg-slate-200 rounded col-span-2"></div>
+            </div>
+            <div class="h-2 bg-slate-200 rounded"></div>
+            <div class="h-2 bg-slate-200 rounded"></div>
+            <div class="grid grid-cols-6">
+              <div class="h-2 bg-slate-200 rounded col-span-1"></div>
+            </div>
+          </div>
+        </div>
+        <div class="animate-pulse flex space-x-4">
+          <div class="flex-1 space-y-3 py-1">
+            <div class="grid grid-cols-4">
+              <div class="h-2 bg-slate-200 rounded col-span-1"></div>
+            </div>
+            <div class="grid grid-cols-4">
+              <div class="h-2 bg-slate-200 rounded col-span-2"></div>
+            </div>
+            <div class="h-2 bg-slate-200 rounded"></div>
+            <div class="h-2 bg-slate-200 rounded"></div>
+            <div class="grid grid-cols-6">
+              <div class="h-2 bg-slate-200 rounded col-span-1"></div>
+            </div>
+          </div>
+        </div>
+        <div class="animate-pulse flex space-x-4">
+          <div class="flex-1 space-y-3 py-1">
+            <div class="grid grid-cols-4">
+              <div class="h-2 bg-slate-200 rounded col-span-1"></div>
+            </div>
+            <div class="grid grid-cols-4">
+              <div class="h-2 bg-slate-200 rounded col-span-2"></div>
+            </div>
+            <div class="h-2 bg-slate-200 rounded"></div>
+            <div class="h-2 bg-slate-200 rounded"></div>
+            <div class="grid grid-cols-6">
+              <div class="h-2 bg-slate-200 rounded col-span-1"></div>
+            </div>
+          </div>
+        </div>
+        <div class="animate-pulse flex space-x-4">
+          <div class="flex-1 space-y-3 py-1">
+            <div class="grid grid-cols-4">
+              <div class="h-2 bg-slate-200 rounded col-span-1"></div>
+            </div>
+            <div class="grid grid-cols-4">
+              <div class="h-2 bg-slate-200 rounded col-span-2"></div>
+            </div>
+            <div class="h-2 bg-slate-200 rounded"></div>
+            <div class="h-2 bg-slate-200 rounded"></div>
+            <div class="grid grid-cols-6">
+              <div class="h-2 bg-slate-200 rounded col-span-1"></div>
+            </div>
+          </div>
+        </div>
+        <div class="animate-pulse flex space-x-4">
+          <div class="flex-1 space-y-3 py-1">
+            <div class="grid grid-cols-4">
+              <div class="h-2 bg-slate-200 rounded col-span-1"></div>
+            </div>
+            <div class="grid grid-cols-4">
+              <div class="h-2 bg-slate-200 rounded col-span-2"></div>
+            </div>
+            <div class="h-2 bg-slate-200 rounded"></div>
+            <div class="h-2 bg-slate-200 rounded"></div>
+            <div class="grid grid-cols-6">
+              <div class="h-2 bg-slate-200 rounded col-span-1"></div>
+            </div>
+          </div>
+        </div>
+        <div class="animate-pulse flex space-x-4">
+          <div class="flex-1 space-y-3 py-1">
+            <div class="grid grid-cols-4">
+              <div class="h-2 bg-slate-200 rounded col-span-1"></div>
+            </div>
+            <div class="grid grid-cols-4">
+              <div class="h-2 bg-slate-200 rounded col-span-2"></div>
+            </div>
+            <div class="h-2 bg-slate-200 rounded"></div>
+            <div class="h-2 bg-slate-200 rounded"></div>
+            <div class="grid grid-cols-6">
+              <div class="h-2 bg-slate-200 rounded col-span-1"></div>
+            </div>
+          </div>
+        </div>
+        <div class="animate-pulse flex space-x-4">
+          <div class="flex-1 space-y-3 py-1">
+            <div class="grid grid-cols-4">
+              <div class="h-2 bg-slate-200 rounded col-span-1"></div>
+            </div>
+            <div class="grid grid-cols-4">
+              <div class="h-2 bg-slate-200 rounded col-span-2"></div>
+            </div>
+            <div class="h-2 bg-slate-200 rounded"></div>
+            <div class="h-2 bg-slate-200 rounded"></div>
+            <div class="grid grid-cols-6">
+              <div class="h-2 bg-slate-200 rounded col-span-1"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav
+    class="flex items-center justify-between border-t border-gray-200 dark:border-gray-500 px-4 sm:px-0 max-w-5xl px-6 mx-auto"
+  >
+    <div class="-mt-px flex w-0 flex-1">
+      <a
+        [class.hidden]="this.selectedNumber == 1"
+        (click)="movePreviousPage()"
+        class="hover:cursor-pointer inline-flex items-center border-t-2 border-transparent pt-4 pr-1 text-sm font-medium text-gray-500 hover:border-gray-300 dark:hover:border-gray-400 hover:text-gray-700 dark:hover:text-gray-400"
+      >
+        <svg
+          class="mr-3 h-5 w-5 text-gray-400"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M18 10a.75.75 0 01-.75.75H4.66l2.1 1.95a.75.75 0 11-1.02 1.1l-3.5-3.25a.75.75 0 010-1.1l3.5-3.25a.75.75 0 111.02 1.1l-2.1 1.95h12.59A.75.75 0 0118 10z"
+            clip-rule="evenodd"
+          />
+        </svg>
+        Previous
+      </a>
+    </div>
+    <div class="hidden md:-mt-px md:flex">
+      <a
+        *ngFor="let number of pageNumberArray"
+        (click)="movePage(number)"
+        [ngClass]="
+          selectedNumber == number
+            ? 'border-red-500 text-red-600 pointer-events-none'
+            : ''
+        "
+        class="hover:cursor-pointer inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 dark:hover:border-gray-400 hover:text-gray-700 dark:hover:text-gray-400"
+        >{{ number }}</a
+      >
+    </div>
+    <div class="-mt-px flex w-0 flex-1 justify-end">
+      <a
+        [class.hidden]="this.selectedNumber == this.pageCount"
+        (click)="moveNextPage()"
+        class="hover:cursor-pointer inline-flex items-center border-t-2 border-transparent pt-4 pl-1 text-sm font-medium text-gray-500 hover:border-gray-300 dark:hover:border-gray-400 hover:text-gray-700 dark:hover:text-gray-400"
+      >
+        Next
+        <svg
+          class="ml-3 h-5 w-5 text-gray-400"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M2 10a.75.75 0 01.75-.75h12.59l-2.1-1.95a.75.75 0 111.02-1.1l3.5 3.25a.75.75 0 010 1.1l-3.5 3.25a.75.75 0 11-1.02-1.1l2.1-1.95H2.75A.75.75 0 012 10z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </a>
+    </div>
+  </nav>
+</div>
