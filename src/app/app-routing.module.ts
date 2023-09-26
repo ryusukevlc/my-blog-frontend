@@ -11,8 +11,8 @@ import { TagsComponent } from './components/pages/admin/tags/tags.component';
 import { ArticleDetailComponent } from './components/pages/article-detail/article-detail.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
-import { ArticleResolverService } from './services/resolver/article-resolver.service';
-import { TagResolverService } from './services/resolver/tag-resolver.service';
+import { ArticleResolverService } from './core/resolver/article-resolver.service';
+import { TagResolverService } from './core/resolver/tag-resolver.service';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
