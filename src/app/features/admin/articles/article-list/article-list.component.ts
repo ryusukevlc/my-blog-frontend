@@ -26,32 +26,21 @@ export class ArticleListComponent {
   ];
 
   async ngOnInit(): Promise<void> {
-    // 記事を全件取得するために第2引数のcountを0に設定している
     this.articleService
       .getArticles(0, 10, ...this.fields)
-      .subscribe((articles) => {
-        articles.forEach((article) => {
-          article.createdAt = article.createdAt.substring(0, 10);
-          if (article.updatedAt != undefined || article.updatedAt != null) {
-            article.updatedAt = article.updatedAt.substring(0, 10);
-          }
-          article.partOfContent = article.partOfContent.slice(0, 50);
-        });
-        this.articles = articles;
+      .subscribe(articles => {
+        this.articles = this.processArticlesForDisplay(articles);
       });
   }
 
-  public displayPopup(id: number) {
-    const result = confirm('削除しますか?');
-    if (result) {
-      this.deleteArticle(id);
-    } else {
-      console.log('削除しませんでした');
-    }
+  public showPopup(articleId: number) {
+    confirm('削除しますか？')
+      ? this.deleteArticle(articleId)
+      : console.log('削除しませんでした。');
   }
 
-  public deleteArticle(id: number) {
-    this.articleService.deleteArticle(id).subscribe(() => {
+  public deleteArticle(articleId: number) {
+    this.articleService.deleteArticle(articleId).subscribe(() => {
       location.reload();
       alert('削除しました');
     });
@@ -63,5 +52,14 @@ export class ArticleListComponent {
 
   public moveToEditArticle(articleId: number) {
     this.routingService.moveToEditArticle(articleId);
+  }
+
+  private processArticlesForDisplay(articles: Article[]): Article[] {
+    return articles.map(article => {
+      article.createdAt = article.createdAt.substring(0, 10);
+      article.updatedAt = article.updatedAt?.substring(0, 10);
+      article.partOfContent = article.partOfContent.substring(0, 50);
+      return article;
+    });
   }
 }
