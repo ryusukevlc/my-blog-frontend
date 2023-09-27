@@ -60,7 +60,7 @@ export class RoutingService {
    * @param articleId
    */
   public moveToEditArticle(articleId: number) {
-    this.router.navigate([Urls.EDIT_ARTICLE], {
+    this.router.navigate(['admin/editArticle'], {
       queryParams: { id: articleId.toString() },
     });
   }

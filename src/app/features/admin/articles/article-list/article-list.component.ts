@@ -56,4 +56,12 @@ export class ArticleListComponent {
       alert('削除しました');
     });
   }
+
+  public moveToCreateArticle() {
+    this.routingService.moveToCreateArticle();
+  }
+
+  public moveToEditArticle(articleId: number) {
+    this.routingService.moveToEditArticle(articleId);
+  }
 }

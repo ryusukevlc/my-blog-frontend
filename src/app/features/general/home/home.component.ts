@@ -111,4 +111,8 @@ export class HomeComponent {
         this.skeletonScreen = false;
       });
   }
+
+  public moveToArticleDetail(articleId: number) {
+    this.routingService.moveToArticleDetail(articleId);
+  }
 }

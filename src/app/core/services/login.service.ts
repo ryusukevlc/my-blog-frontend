@@ -11,7 +11,7 @@ export class LoginService {
   constructor(private httpClient: HttpClient) {}
 
   public getLoginInfo(email: string, password: string) {
-    const url: URL = new URL(Urls.LOGIN_URL);
+    const url: URL = new URL(Urls.LOGIN_API.LOGIN_URL);
     url.searchParams.append('email', email);
     url.searchParams.append('password', password);
 
@@ -19,6 +19,6 @@ export class LoginService {
   }
 
   public authentication(credentials: credentials): Observable<boolean> {
-    return this.httpClient.post<boolean>(Urls.LOGIN_URL, credentials);
+    return this.httpClient.post<boolean>(Urls.LOGIN_API.LOGIN_URL, credentials);
   }
 }

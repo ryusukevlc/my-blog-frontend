@@ -26,4 +26,8 @@ export class HeaderComponent {
       this.isDarkMode = true;
     }
   }
+
+  public moveToHome() {
+    this.routingService.moveToHome();
+  }
 }

@@ -11,7 +11,7 @@ export class TagService {
   constructor(private http: HttpClient) {}
 
   public getAllTags(): Observable<Tag[]> {
-    return this.http.get<Tag[]>(Urls.TAGS_URL, {
+    return this.http.get<Tag[]>(Urls.TAG_API.TAGS_URL, {
       reportProgress: true,
     });
   }

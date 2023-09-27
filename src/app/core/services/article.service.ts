@@ -35,7 +35,7 @@ export class ArticleService {
       options.params = options.params.append('fields', field);
     });
     // httpリクエスト
-    return this.http.get<Article[]>(Urls.ARTICLES_URL, options);
+    return this.http.get<Article[]>(Urls.ARTICLE_API.ARTICLES_URL, options);
   }
 
   /**
@@ -53,30 +53,41 @@ export class ArticleService {
       options.params = options.params.append('markdown', true);
     }
 
-    return this.http.get(Urls.ARTICLES_URL + '/' + id.toString(), options);
+    return this.http.get(
+      Urls.ARTICLE_API.ARTICLES_URL + '/' + id.toString(),
+      options
+    );
   }
 
   public getArticleCount() {
-    return this.http.get<Count>(Urls.ARTICLES_COUNT_URL, {});
+    return this.http.get<Count>(Urls.ARTICLE_API.ARTICLES_COUNT_URL, {});
   }
 
   public createArticle(value: Object) {
     const options = {
       reportProgress: true,
     };
-    return this.http.post<Article>(Urls.ARTICLES_URL, value, options);
+    return this.http.post<Article>(
+      Urls.ARTICLE_API.ARTICLES_URL,
+      value,
+      options
+    );
   }
 
   public updateArticle(value: Object) {
     const options = {
       reportProgress: true,
     };
-    return this.http.patch<Article>(Urls.ARTICLES_URL, value, options);
+    return this.http.patch<Article>(
+      Urls.ARTICLE_API.ARTICLES_URL,
+      value,
+      options
+    );
   }
 
   public deleteArticle(articleId: number) {
     return this.http.delete<void>(
-      Urls.ARTICLES_URL + '/' + articleId.toString(),
+      Urls.ARTICLE_API.ARTICLES_URL + '/' + articleId.toString(),
       {}
     );
   }
