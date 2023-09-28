@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Tag } from 'src/app/core/models/tag.model';
 import { ArticleService } from 'src/app/core/services/article.service';
@@ -37,11 +42,11 @@ export class CreateArticleComponent {
    * ngOnInit
    */
   ngOnInit(): void {
-    this.route.data.subscribe((data) => {
+    this.route.data.subscribe(data => {
       this.tags = data['tags'];
       this.createArticleForm = this.formBuilder.group({
-        title: [''],
-        content: [''],
+        title: new FormControl('', [Validators.required]),
+        content: new FormControl('', [Validators.required]),
       });
     });
   }
@@ -76,7 +81,7 @@ export class CreateArticleComponent {
    */
   public removeTag(selectedTagId: number): void {
     this.selectedTagIds = this.selectedTagIds.filter(
-      (tagId) => tagId !== selectedTagId
+      tagId => tagId !== selectedTagId
     );
   }
 
@@ -84,20 +89,33 @@ export class CreateArticleComponent {
    * POSTボタンをクリック時の処理
    */
   public onSubmit(): void {
-    const tagList = [];
-    for (const selectedTagId of this.selectedTagIds) {
-      const tag = this.tags.find((tag) => tag.id === selectedTagId);
-      tagList.push(tag);
+    if (this.createArticleForm.valid) {
+      const tagList = [];
+      for (const selectedTagId of this.selectedTagIds) {
+        const tag = this.tags.find(tag => tag.id === selectedTagId);
+        tagList.push(tag);
+      }
+
+      const requestBody = {
+        title: this.createArticleForm.value.title,
+        content: this.createArticleForm.value.content,
+        tagList: tagList,
+      };
+
+      this.articleService.createArticle(requestBody).subscribe(() => {
+        this.routingService.moveToArticleList();
+      });
+    } else {
+      this.title.markAsTouched();
+      this.content.markAsTouched();
     }
+  }
 
-    const requestBody = {
-      title: this.createArticleForm.value.title,
-      content: this.createArticleForm.value.content,
-      tagList: tagList,
-    };
+  get title(): FormControl {
+    return this.createArticleForm.get('title') as FormControl;
+  }
 
-    this.articleService.createArticle(requestBody).subscribe(() => {
-      this.routingService.moveToArticleList();
-    });
+  get content(): FormControl {
+    return this.createArticleForm.get('content') as FormControl;
   }
 }
