@@ -23,24 +23,12 @@ export class CreateArticleComponent {
     private formBuilder: FormBuilder
   ) {}
 
-  /**
-   * 記事作成フォーム
-   */
   public createArticleForm: FormGroup;
 
-  /**
-   * 全タグリスト
-   */
   public tags: Tag[] = [];
 
-  /**
-   * 選択済みのタグIDリスト
-   */
   public selectedTagIds: number[] = [];
 
-  /**
-   * ngOnInit
-   */
   ngOnInit(): void {
     this.route.data.subscribe(data => {
       this.tags = data['tags'];
@@ -51,12 +39,6 @@ export class CreateArticleComponent {
     });
   }
 
-  /**
-   * タグクリック時の処理
-   *
-   * @param tagId タグID
-   * @returns void
-   */
   public clickTag(tagId: number): void {
     if (this.selectedTagIds.indexOf(tagId) === -1) {
       this.addTag(tagId);
@@ -65,29 +47,16 @@ export class CreateArticleComponent {
     }
   }
 
-  /**
-   * タグを選択済みリストに追加する
-   *
-   * @param tagId タグID
-   */
   public addTag(tagId: number): void {
     this.selectedTagIds.push(tagId);
   }
 
-  /**
-   * タグを選択済みリストから除外する
-   *
-   * @param selectedTagId 選択済みのタグID
-   */
   public removeTag(selectedTagId: number): void {
     this.selectedTagIds = this.selectedTagIds.filter(
       tagId => tagId !== selectedTagId
     );
   }
 
-  /**
-   * POSTボタンをクリック時の処理
-   */
   public onSubmit(): void {
     if (this.createArticleForm.valid) {
       const tagList = [];
