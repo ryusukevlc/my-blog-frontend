@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Observable, map } from 'rxjs';
 import { Article } from 'src/app/core/models/article.model';
 import { Count } from 'src/app/core/models/count.model';
 import { ArticleService } from 'src/app/core/services/article.service';
@@ -28,17 +29,11 @@ export class HomeComponent {
 
   public ngOnInit(): void {
     this.skeletonScreen = true;
-
-    this.articleService
-      .getArticles(0, HomeComponent.NUMBER_OF_DISPLAYS, ...this.fields)
-      .subscribe(articles => {
-        this.articles = this.processArticlesForDisplay(articles);
-        this.skeletonScreen = false;
-      });
-
-    this.articleService.getArticleCount().subscribe(count => {
-      this.setPageNumber(this.getPageCount(count));
+    this.getArticles(0).subscribe(articles => {
+      this.articles = articles;
+      this.skeletonScreen = false;
     });
+    this.getPageNumber();
   }
 
   public movePreviousPage() {
@@ -61,26 +56,34 @@ export class HomeComponent {
     window.scrollTo(0, 0);
     this.selectedPageNumber = pageNumber;
 
-    this.articleService
-      .getArticles(
-        HomeComponent.NUMBER_OF_DISPLAYS * (this.selectedPageNumber - 1),
-        HomeComponent.NUMBER_OF_DISPLAYS,
-        ...this.fields
-      )
-      .subscribe(articles => {
-        this.articles = this.processArticlesForDisplay(articles);
-        this.skeletonScreen = false;
-      });
+    this.getArticles(
+      HomeComponent.NUMBER_OF_DISPLAYS * (this.selectedPageNumber - 1)
+    ).subscribe(articles => {
+      this.articles = articles;
+      this.skeletonScreen = false;
+    });
   }
 
   public moveToArticleDetail(articleId: number) {
     this.routingService.moveToArticleDetail(articleId);
   }
 
+  private getArticles(offset: number): Observable<Article[]> {
+    return this.articleService
+      .getArticles(offset, HomeComponent.NUMBER_OF_DISPLAYS, ...this.fields)
+      .pipe(map(articles => this.processArticlesForDisplay(articles)));
+  }
+
   private processArticlesForDisplay(articles: Article[]): Article[] {
     return articles.map(article => {
       article.createdAt = article.createdAt.substring(0, 10);
       return article;
+    });
+  }
+
+  private getPageNumber(): void {
+    this.articleService.getArticleCount().subscribe(count => {
+      this.setPageNumber(this.getPageCount(count));
     });
   }
 
