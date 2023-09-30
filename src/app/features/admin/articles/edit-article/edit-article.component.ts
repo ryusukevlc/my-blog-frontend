@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Article } from 'src/app/core/models/article.model';
 import { Tag } from 'src/app/core/models/tag.model';
@@ -26,67 +31,62 @@ export class EditArticleComponent {
   public selectedTagIds: number[];
 
   ngOnInit() {
-    this.route.data.subscribe((data) => {
+    this.route.data.subscribe(data => {
       this.article = data['article'];
-      this.selectedTagIds = this.article.tagList.map((tag) => tag.id);
+      this.selectedTagIds = this.article.tagList.map(tag => tag.id);
       this.tags = data['tags'];
       this.editArticleForm = this.formBuilder.group({
-        title: [''],
-        content: [''],
+        title: new FormControl('', [Validators.required]),
+        content: new FormControl('', [Validators.required]),
       });
     });
   }
 
-  /**
-   * タグクリック時の処理
-   *
-   * @param tagId タグID
-   * @returns void
-   */
   public clickTag(tagId: number): void {
-    if (this.selectedTagIds.indexOf(tagId) === -1) {
-      this.addTag(tagId);
-    } else {
-      this.removeTag(tagId);
-    }
+    this.selectedTagIds.indexOf(tagId) === -1
+      ? this.addTag(tagId)
+      : this.removeTag(tagId);
   }
 
-  /**
-   * タグを選択済みリストに追加する
-   *
-   * @param tagId タグID
-   */
   public addTag(tagId: number): void {
     this.selectedTagIds.push(tagId);
   }
 
-  /**
-   * タグを選択済みリストから除外する
-   *
-   * @param selectedTagId 選択済みのタグID
-   */
   public removeTag(selectedTagId: number): void {
     this.selectedTagIds = this.selectedTagIds.filter(
-      (tagId) => tagId !== selectedTagId
+      tagId => tagId !== selectedTagId
     );
   }
 
   public onSubmit() {
-    const tagList = [];
-    for (const selectedTagId of this.selectedTagIds) {
-      const tag = this.tags.find((tag) => tag.id === selectedTagId);
-      tagList.push(tag);
+    if (this.editArticleForm.valid) {
+      const tagList = [];
+      for (const selectedTagId of this.selectedTagIds) {
+        const tag = this.tags.find(tag => tag.id === selectedTagId);
+        tagList.push(tag);
+      }
+
+      const requestBody = {
+        id: this.article.id,
+        title: this.editArticleForm.value.title,
+        content: this.editArticleForm.value.content,
+        tagList: tagList,
+      };
+
+      this.articleService.updateArticle(requestBody).subscribe(() => {
+        this.routingService.moveToArticleList();
+      });
+    } else {
+      this.title.markAsTouched();
+      this.content.markAsTouched();
     }
+  }
 
-    const requestBody = {
-      id: this.article.id,
-      title: this.editArticleForm.value.title,
-      content: this.editArticleForm.value.content,
-      tagList: tagList,
-    };
+  get title(): FormControl {
+    return this.editArticleForm.get('title') as FormControl;
+  }
 
-    this.articleService.updateArticle(requestBody).subscribe(() => {
-      this.routingService.moveToArticleList();
-    });
+  get content(): FormControl {
+    return this.editArticleForm.get('content') as FormControl;
   }
 }

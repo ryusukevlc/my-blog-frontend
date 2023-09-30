@@ -37,6 +37,13 @@
             placeholder="Title"
           />
         </div>
+        <p
+          class="mt-2 text-sm text-red-600"
+          id="email-error"
+          *ngIf="title.touched && title.errors?.['required']"
+        >
+          タイトルを入力してください。
+        </p>
         <div class="my-2">
           <div
             id="tabs-1-panel-1"
@@ -56,6 +63,13 @@
                 class="border border-gray-200 dark:border-gray-500 dark:text-zinc-300 bg-transparent block w-full rounded-md sm:text-sm"
                 placeholder="Add your comment..."
               ></textarea>
+              <p
+                class="mt-2 text-sm text-red-600"
+                id="email-error"
+                *ngIf="content.touched && content.errors?.['required']"
+              >
+                内容を入力してください。
+              </p>
             </div>
           </div>
         </div>
