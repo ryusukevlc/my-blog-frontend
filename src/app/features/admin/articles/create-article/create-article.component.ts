@@ -29,7 +29,7 @@ export class CreateArticleComponent {
 
   public selectedTagIds: number[] = [];
 
-  ngOnInit(): void {
+  public ngOnInit() {
     this.route.data.subscribe(data => {
       this.tags = data['tags'];
       this.createArticleForm = this.formBuilder.group({

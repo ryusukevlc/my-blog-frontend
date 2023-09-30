@@ -16,12 +16,9 @@ export class ArticleDetailComponent {
   // 更新有無ステータス
   public isupdated: boolean = false;
 
-  /**
-   * ngOnInit
-   */
-  ngOnInit() {
+  public ngOnInit() {
     window.scrollTo(0, 0);
-    this.route.data.subscribe((data) => {
+    this.route.data.subscribe(data => {
       const article = data['article'];
       article.createdAt = article.createdAt.substring(0, 10);
       if (article.updatedAt != undefined || article.updatedAt != null) {

@@ -25,7 +25,7 @@ export class ArticleListComponent {
     'part_of_content',
   ];
 
-  async ngOnInit(): Promise<void> {
+  public async ngOnInit(): Promise<void> {
     this.articleService
       .getArticles(0, 10, ...this.fields)
       .subscribe(articles => {

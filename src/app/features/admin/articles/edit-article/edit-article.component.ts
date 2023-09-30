@@ -30,7 +30,7 @@ export class EditArticleComponent {
   public article: Article;
   public selectedTagIds: number[];
 
-  ngOnInit() {
+  public ngOnInit() {
     this.route.data.subscribe(data => {
       this.article = data['article'];
       this.selectedTagIds = this.article.tagList.map(tag => tag.id);

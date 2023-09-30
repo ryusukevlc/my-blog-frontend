@@ -26,7 +26,7 @@ export class HomeComponent {
   // ページ番号の配列
   public pageNumberArray: number[] = [];
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.skeletonScreen = true;
 
     this.articleService

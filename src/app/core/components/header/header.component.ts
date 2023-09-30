@@ -21,7 +21,7 @@ export class HeaderComponent {
     localStorage['theme'] = this.isDarkMode ? 'dark' : 'light';
   }
 
-  ngOnInit() {
+  public ngOnInit() {
     if (localStorage['theme'] == 'dark') {
       this.isDarkMode = true;
     }
