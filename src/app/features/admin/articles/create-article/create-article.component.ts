@@ -40,11 +40,9 @@ export class CreateArticleComponent {
   }
 
   public clickTag(tagId: number): void {
-    if (this.selectedTagIds.indexOf(tagId) === -1) {
-      this.addTag(tagId);
-    } else {
-      this.removeTag(tagId);
-    }
+    this.selectedTagIds.indexOf(tagId) === -1
+      ? this.addTag(tagId)
+      : this.removeTag(tagId);
   }
 
   public addTag(tagId: number): void {
