@@ -36,6 +36,10 @@ export class HomeComponent {
     this.getPageNumber();
   }
 
+  public moveToArticleDetail(articleId: number) {
+    this.routingService.moveToArticleDetail(articleId);
+  }
+
   public movePreviousPage() {
     if (this.selectedPageNumber == 1) return;
     this.movePage(this.selectedPageNumber - 1);
@@ -62,10 +66,6 @@ export class HomeComponent {
       this.articles = articles;
       this.skeletonScreen = false;
     });
-  }
-
-  public moveToArticleDetail(articleId: number) {
-    this.routingService.moveToArticleDetail(articleId);
   }
 
   private getArticles(offset: number): Observable<Article[]> {
