@@ -57,10 +57,10 @@ export class CreateArticleComponent {
 
   public onSubmit(): void {
     if (this.createArticleForm.valid) {
+      // TODO: tagクラスではなく、tagIdをAPIに送信する。（API側の修正も必要）
       const tagList = [];
       for (const selectedTagId of this.selectedTagIds) {
-        const tag = this.tags.find(tag => tag.id === selectedTagId);
-        tagList.push(tag);
+        tagList.push(this.tags.find(tag => tag.id === selectedTagId));
       }
 
       const requestBody = {
