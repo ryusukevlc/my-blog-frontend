@@ -19,10 +19,10 @@ export class ArticleListComponent {
   private fields: string[] = [
     'id',
     'title',
-    'created_at',
-    'updated_at',
-    'is_writing',
-    'part_of_content',
+    'createdAt',
+    'updatedAt',
+    'isWriting',
+    'partOfContent',
   ];
 
   public async ngOnInit(): Promise<void> {

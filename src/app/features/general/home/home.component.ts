@@ -22,7 +22,7 @@ export class HomeComponent {
   public articles: Article[];
   public selectedPageNumber: number = 1;
   public skeletonScreen: boolean = false;
-  private fields = ['id', 'title', 'part_of_content', 'created_at'];
+  private fields = ['id', 'title', 'partOfContent', 'createdAt'];
 
   // ページ番号の配列
   public pageNumberArray: number[] = [];
