@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-tags',
-  templateUrl: './tags.component.html',
+  selector: 'app-admin-tags',
+  templateUrl: './admin-tags.component.html',
 })
 export class TagsComponent {}
