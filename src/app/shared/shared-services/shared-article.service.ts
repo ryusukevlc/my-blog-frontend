@@ -10,7 +10,7 @@ import { ArticleCount } from 'src/app/shared/interfaces/article-count.interface'
   providedIn: 'root',
 })
 export class SharedArticleService {
-  constructor(private http: HttpClient) {}
+  constructor(public http: HttpClient) {}
 
   public getArticles(
     offset: number,

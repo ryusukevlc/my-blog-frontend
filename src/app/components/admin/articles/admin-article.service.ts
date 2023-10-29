@@ -10,29 +10,9 @@ import { SharedArticleService } from 'src/app/shared/shared-services/shared-arti
 @Injectable({
   providedIn: 'root',
 })
-export class AdminArticleService {
-  constructor(
-    private http: HttpClient,
-    private sharedArticleService: SharedArticleService
-  ) {}
-
-  public getArticles(
-    offset: number,
-    count: number,
-    ...fields: string[]
-  ): Observable<AdminArticle[]> {
-    return this.sharedArticleService.getArticles(offset, count, ...fields);
-  }
-
-  public getArticleDetail(
-    id: number,
-    isMarkdown: boolean = false
-  ): Observable<any> {
-    return this.sharedArticleService.getArticleDetail(id, isMarkdown);
-  }
-
-  public getArticleCount(): Observable<AdminArticleCount> {
-    return this.sharedArticleService.getArticleCount();
+export class AdminArticleService extends SharedArticleService {
+  constructor(http: HttpClient) {
+    super(http);
   }
 
   public createArticle(value: Object) {
