@@ -11,7 +11,7 @@ import { DraftsComponent } from './components/admin/drafts/drafts.component';
 import { LoginComponent } from './components/admin/login/login.component';
 import { PortalComponent } from './components/admin/portal/portal.component';
 import { TagsComponent } from './components/admin/tags/tags.component';
-import { ArticleDetailComponent } from './components/user/article-detail/article-detail.component';
+import { ArticleDetailComponent } from './components/user/articles/article-detail/article-detail.component';
 import { HomeComponent } from './components/user/home/home.component';
 import { SettingsComponent } from './components/admin/settings/settings.component';
 import { AnalyticsComponent } from './components/admin/analytics/analytics.component';
