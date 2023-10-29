@@ -1,6 +1,7 @@
+import { Article } from 'src/app/shared/interfaces/article.interface';
 import { AdminTag } from '../tags/admin-tag.model';
 
-export class AdminArticle {
+export class AdminArticle implements Article {
   public id: number;
   public title: string;
   public content: string;
