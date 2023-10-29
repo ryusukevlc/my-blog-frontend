@@ -14,7 +14,6 @@ import { RoutingService } from 'src/app/core/services/routing.service';
 @Component({
   selector: 'app-edit-article',
   templateUrl: './edit-article.component.html',
-  styleUrls: ['./edit-article.component.scss'],
 })
 export class EditArticleComponent {
   constructor(

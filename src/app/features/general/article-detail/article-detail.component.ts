@@ -5,7 +5,6 @@ import { Article } from 'src/app/core/models/article.model';
 @Component({
   selector: 'app-article-detail',
   templateUrl: './article-detail.component.html',
-  styleUrls: ['./article-detail.component.scss'],
 })
 export class ArticleDetailComponent {
   constructor(private route: ActivatedRoute) {}

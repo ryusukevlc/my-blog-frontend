@@ -5,7 +5,6 @@ import { PortalService } from './portal.service';
 @Component({
   selector: 'app-portal',
   templateUrl: './portal.component.html',
-  styleUrls: ['./portal.component.scss'],
 })
 export class PortalComponent {
   constructor(

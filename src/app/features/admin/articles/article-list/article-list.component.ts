@@ -6,7 +6,6 @@ import { RoutingService } from 'src/app/core/services/routing.service';
 @Component({
   selector: 'app-article-list',
   templateUrl: './article-list.component.html',
-  styleUrls: ['./article-list.component.scss'],
 })
 export class ArticleListComponent {
   constructor(

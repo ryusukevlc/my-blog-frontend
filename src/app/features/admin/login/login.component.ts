@@ -6,7 +6,6 @@ import { RoutingService } from 'src/app/core/services/routing.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
   constructor(
@@ -22,7 +21,7 @@ export class LoginComponent {
     this.errorMessage = '';
     this.loginService
       .authentication(this.credentials)
-      .subscribe((isAuthenticated) => {
+      .subscribe(isAuthenticated => {
         if (isAuthenticated) {
           this.routingService.moveToPortal();
         } else {
