@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { UserArticle } from 'src/app/components/user/user-article.model';
-import { UserArticleCount } from 'src/app/components/user/user-article-count.model';
+import { UserArticle } from 'src/app/components/user/articles/user-article.model';
+import { UserArticleCount } from 'src/app/components/user/articles/user-article-count.model';
 import { UserArticleService } from 'src/app/components/user/user-article.service';
 import { RoutingService } from 'src/app/core/core-services/routing.service';
 
