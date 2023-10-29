@@ -1,4 +1,4 @@
-import { UserTag } from '../tags/user-tag.model';
+import { UserTag } from '../user-tags/user-tag.model';
 
 export class UserArticle {
   public id: number;
