@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Tag } from 'src/app/shared/interfaces/tag.interface';
 import { SharedTagService } from 'src/app/shared/shared-services/shared-tag.service';
@@ -7,10 +6,10 @@ import { SharedTagService } from 'src/app/shared/shared-services/shared-tag.serv
 @Injectable({
   providedIn: 'root',
 })
-export class TagResolverService {
+export class AdminTagsService {
   constructor(private sharedTagService: SharedTagService) {}
 
-  public resolve(route: ActivatedRouteSnapshot): Observable<Tag[]> {
+  public getAllTags(): Observable<Tag[]> {
     return this.sharedTagService.getAllTags();
   }
 }

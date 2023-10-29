@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './shared/shared-components/page-not-found/page-not-found.component';
 import { ArticleResolverService } from './core/resolvers/article-resolver.service';
 import { TagResolverService } from './core/resolvers/tag-resolver.service';
-import { ArticleListComponent } from './features/admin/articles/article-list/article-list.component';
-import { CreateArticleComponent } from './features/admin/articles/create-article/create-article.component';
-import { EditArticleComponent } from './features/admin/articles/edit-article/edit-article.component';
-import { DraftsComponent } from './features/admin/drafts/drafts.component';
-import { LoginComponent } from './features/admin/login/login.component';
-import { PortalComponent } from './features/admin/portal/portal.component';
-import { TagsComponent } from './features/admin/tags/tags.component';
-import { ArticleDetailComponent } from './features/general/article-detail/article-detail.component';
-import { HomeComponent } from './features/general/home/home.component';
+import { ArticleListComponent } from './components/admin/articles/article-list/article-list.component';
+import { CreateArticleComponent } from './components/admin/articles/create-article/create-article.component';
+import { EditArticleComponent } from './components/admin/articles/edit-article/edit-article.component';
+import { DraftsComponent } from './components/admin/drafts/drafts.component';
+import { LoginComponent } from './components/admin/login/login.component';
+import { PortalComponent } from './components/admin/portal/portal.component';
+import { TagsComponent } from './components/admin/tags/tags.component';
+import { ArticleDetailComponent } from './components/user/article-detail/article-detail.component';
+import { HomeComponent } from './components/user/home/home.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },

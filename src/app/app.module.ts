@@ -8,7 +8,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { httpInterceptor } from './core/interceptors/http-interceptor';
-import { FeaturesModule } from './features/features.module';
+import { ComponentsModule } from './components/components.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,10 +17,11 @@ import { FeaturesModule } from './features/features.module';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    FeaturesModule,
+    ComponentsModule,
     HttpClientModule,
     ReactiveFormsModule,
     MarkdownModule,
+    SharedModule,
   ],
   exports: [MarkdownModule],
   providers: [
