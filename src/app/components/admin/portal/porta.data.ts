@@ -17,6 +17,6 @@ export const MENU_ITEMS = [
   },
   {
     imagePath: 'assets/images/analytics.png',
-    title: 'analytics',
+    title: 'Analytics',
   },
 ];

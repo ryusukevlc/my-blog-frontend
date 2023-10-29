@@ -9,6 +9,8 @@ import { DraftsComponent } from './drafts/drafts.component';
 import { LoginComponent } from './login/login.component';
 import { PortalComponent } from './portal/portal.component';
 import { TagsComponent } from './tags/tags.component';
+import { SettingsComponent } from './settings/settings.component';
+import { AnalyticsComponent } from './analytics/analytics.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { TagsComponent } from './tags/tags.component';
     LoginComponent,
     PortalComponent,
     TagsComponent,
+    SettingsComponent,
+    AnalyticsComponent,
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
 })

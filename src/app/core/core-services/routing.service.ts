@@ -77,4 +77,18 @@ export class RoutingService {
   public moveToDrafts() {
     this.router.navigate(['admin/drafts']);
   }
+
+  /**
+   * 設定画面に遷移する
+   */
+  public moveToSettings() {
+    this.router.navigate(['admin/settings']);
+  }
+
+  /**
+   * 分析画面に遷移する
+   */
+  public moveToAnalytics() {
+    this.router.navigate(['admin/analytics']);
+  }
 }

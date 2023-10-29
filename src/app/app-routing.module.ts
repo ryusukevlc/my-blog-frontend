@@ -13,6 +13,8 @@ import { PortalComponent } from './components/admin/portal/portal.component';
 import { TagsComponent } from './components/admin/tags/tags.component';
 import { ArticleDetailComponent } from './components/user/article-detail/article-detail.component';
 import { HomeComponent } from './components/user/home/home.component';
+import { SettingsComponent } from './components/admin/settings/settings.component';
+import { AnalyticsComponent } from './components/admin/analytics/analytics.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -54,6 +56,16 @@ const routes: Routes = [
   },
   { path: 'admin/tags', component: TagsComponent, pathMatch: 'full' },
   { path: 'admin/drafts', component: DraftsComponent, pathMatch: 'full' },
+  {
+    path: 'admin/settings',
+    component: SettingsComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'admin/analytics',
+    component: AnalyticsComponent,
+    pathMatch: 'full',
+  },
   {
     path: '**',
     component: PageNotFoundComponent,

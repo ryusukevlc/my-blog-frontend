@@ -29,14 +29,13 @@ export class PortalComponent {
       case 'Drafts':
         this.routingService.moveToDrafts();
         break;
-      case 'settings':
-        console.log('test');
+      case 'Settings':
+        this.routingService.moveToSettings();
         break;
-      case 'analytics':
-        console.log('test');
+      case 'Analytics':
+        this.routingService.moveToAnalytics();
         break;
       default:
-        console.log('not found page');
         break;
     }
   }
