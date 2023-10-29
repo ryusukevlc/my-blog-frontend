@@ -6,9 +6,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { AdminArticle } from 'src/app/components/admin/articles/admin-article.model';
-import { AdminTag } from 'src/app/components/admin/tags/admin-tag.model';
-import { AdminArticleService } from 'src/app/components/admin/articles/admin-article.service';
+import { AdminArticle } from 'src/app/components/admin/admin-articles/admin-article.model';
+import { AdminTag } from 'src/app/components/admin/admin-tags/admin-tag.model';
+import { AdminArticleService } from 'src/app/components/admin/admin-articles/admin-article.service';
 import { RoutingService } from 'src/app/core/core-services/routing.service';
 
 @Component({

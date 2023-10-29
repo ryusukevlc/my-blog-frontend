@@ -1,5 +1,5 @@
 import { Article } from 'src/app/shared/interfaces/article.interface';
-import { AdminTag } from '../tags/admin-tag.model';
+import { AdminTag } from '../admin-tags/admin-tag.model';
 
 export class AdminArticle implements Article {
   public id: number;

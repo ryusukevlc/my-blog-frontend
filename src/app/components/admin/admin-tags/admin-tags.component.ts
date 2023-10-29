@@ -4,4 +4,4 @@ import { Component } from '@angular/core';
   selector: 'app-admin-tags',
   templateUrl: './admin-tags.component.html',
 })
-export class TagsComponent {}
+export class AdminTagsComponent {}

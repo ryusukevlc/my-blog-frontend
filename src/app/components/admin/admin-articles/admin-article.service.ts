@@ -3,8 +3,8 @@ import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Urls } from 'src/app/core/constants/urls';
-import { AdminArticle } from 'src/app/components/admin/articles/admin-article.model';
-import { AdminArticleCount } from 'src/app/components/admin/articles/admin-article-count.model';
+import { AdminArticle } from 'src/app/components/admin/admin-articles/admin-article.model';
+import { AdminArticleCount } from 'src/app/components/admin/admin-articles/admin-article-count.model';
 import { SharedArticleService } from 'src/app/shared/shared-services/shared-article.service';
 
 @Injectable({

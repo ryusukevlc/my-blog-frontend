@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { AdminArticle } from 'src/app/components/admin/articles/admin-article.model';
-import { AdminArticleService } from 'src/app/components/admin/articles/admin-article.service';
+import { AdminArticle } from 'src/app/components/admin/admin-articles/admin-article.model';
+import { AdminArticleService } from 'src/app/components/admin/admin-articles/admin-article.service';
 import { RoutingService } from 'src/app/core/core-services/routing.service';
 
 @Component({
   selector: 'app-article-list',
-  templateUrl: './article-list.component.html',
+  templateUrl: './admin-article-list.component.html',
 })
-export class ArticleListComponent {
+export class AdminArticleListComponent {
   constructor(
     private articleService: AdminArticleService,
     public routingService: RoutingService
