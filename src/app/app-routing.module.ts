@@ -12,12 +12,12 @@ import { LoginComponent } from './components/admin/login/login.component';
 import { PortalComponent } from './components/admin/portal/portal.component';
 import { TagsComponent } from './components/admin/tags/tags.component';
 import { ArticleDetailComponent } from './components/user/articles/article-detail/article-detail.component';
-import { HomeComponent } from './components/user/home/home.component';
+import { UserArticleListComponent } from './components/user/articles/user-article-list/user-article-list.component';
 import { SettingsComponent } from './components/admin/settings/settings.component';
 import { AnalyticsComponent } from './components/admin/analytics/analytics.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: '', component: UserArticleListComponent, pathMatch: 'full' },
   {
     path: 'detail',
     component: ArticleDetailComponent,

@@ -6,10 +6,10 @@ import { UserArticleService } from 'src/app/components/user/user-article.service
 import { RoutingService } from 'src/app/core/core-services/routing.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
+  selector: 'app-user-article-list',
+  templateUrl: './user-article-list.component.html',
 })
-export class HomeComponent {
+export class UserArticleListComponent {
   constructor(
     private articleService: UserArticleService,
     public routingService: RoutingService
@@ -60,7 +60,8 @@ export class HomeComponent {
     this.selectedPageNumber = pageNumber;
 
     this.getArticles(
-      HomeComponent.NUMBER_OF_DISPLAYS * (this.selectedPageNumber - 1)
+      UserArticleListComponent.NUMBER_OF_DISPLAYS *
+        (this.selectedPageNumber - 1)
     ).subscribe(articles => {
       this.articles = articles;
       this.skeletonScreen = false;
@@ -69,7 +70,11 @@ export class HomeComponent {
 
   private getArticles(offset: number): Observable<UserArticle[]> {
     return this.articleService
-      .getArticles(offset, HomeComponent.NUMBER_OF_DISPLAYS, ...this.fields)
+      .getArticles(
+        offset,
+        UserArticleListComponent.NUMBER_OF_DISPLAYS,
+        ...this.fields
+      )
       .pipe(map(articles => this.processArticlesForDisplay(articles)));
   }
 
@@ -88,7 +93,7 @@ export class HomeComponent {
 
   private getPageCount(count: UserArticleCount): number {
     return Math.ceil(
-      count.allArticleNumbers / HomeComponent.NUMBER_OF_DISPLAYS
+      count.allArticleNumbers / UserArticleListComponent.NUMBER_OF_DISPLAYS
     );
   }
 
