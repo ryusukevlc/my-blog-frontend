@@ -58,7 +58,6 @@ export class UserArticleListComponent {
     this.skeletonScreen = true;
     window.scrollTo(0, 0);
     this.selectedPageNumber = pageNumber;
-
     this.getArticles(
       UserArticleListComponent.NUMBER_OF_DISPLAYS *
         (this.selectedPageNumber - 1)
