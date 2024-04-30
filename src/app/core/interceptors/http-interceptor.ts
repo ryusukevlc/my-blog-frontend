@@ -38,7 +38,7 @@ export class httpInterceptor implements HttpInterceptor {
   private postProcess(req: HttpRequest<any>): Observable<HttpEvent<any>> {
     const data = this.http
       .get(req.url.replace('method', 'POST'))
-      .subscribe((response) => {
+      .subscribe(response => {
         return response;
       });
     return of(new HttpResponse({ status: 200, body: data }));
@@ -63,7 +63,7 @@ export class httpInterceptor implements HttpInterceptor {
   private patchProcess(req: HttpRequest<any>): Observable<HttpEvent<any>> {
     const data = this.http
       .get(req.url.replace('method', 'POST'))
-      .subscribe((response) => {
+      .subscribe(response => {
         return response;
       });
     return of(new HttpResponse({ status: 200, body: data }));
@@ -81,23 +81,23 @@ export class httpInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     const cloneReq = this.createCloneReq(req);
-    nProgress.configure({ showSpinner: false });
-    if (req.reportProgress) {
-      // プログレスバー開始
-      nProgress.start();
-      return next.handle(cloneReq).pipe(
-        tap((event: HttpEvent<any>) => {
-          // レスポンスに対する加工
-          // if (event.type == HttpEventType.Response) {}
-        }),
-        finalize(() => {
-          // プログレスバー完了
-          nProgress.done();
-        })
-      );
-    } else {
-      return next.handle(cloneReq);
-    }
+    // nProgress.configure({ showSpinner: false });
+    // if (req.reportProgress) {
+    //   // プログレスバー開始
+    //   nProgress.start();
+    //   return next.handle(cloneReq).pipe(
+    //     tap((event: HttpEvent<any>) => {
+    //       // レスポンスに対する加工
+    //       // if (event.type == HttpEventType.Response) {}
+    //     }),
+    //     finalize(() => {
+    //       // プログレスバー完了
+    //       nProgress.done();
+    //     })
+    //   );
+    // } else {
+    return next.handle(cloneReq);
+    // }
   }
 
   /**

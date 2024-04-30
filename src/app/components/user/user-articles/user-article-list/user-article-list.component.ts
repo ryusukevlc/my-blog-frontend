@@ -4,6 +4,11 @@ import { UserArticle } from 'src/app/components/user/user-articles/user-article.
 import { UserArticleCount } from 'src/app/components/user/user-articles/user-article-count.model';
 import { UserArticleService } from 'src/app/components/user/user-articles/user-article.service';
 import { RoutingService } from 'src/app/core/core-services/routing.service';
+import { Octokit } from 'octokit';
+import { environment } from 'src/app/core/environments/environment';
+import { OctokitResponse } from '@octokit/types';
+import { UserTag } from '../../user-tags/user-tag.model';
+import { marked } from 'marked';
 
 @Component({
   selector: 'app-user-article-list',
@@ -26,17 +31,62 @@ export class UserArticleListComponent {
   // ページ番号の配列
   public pageNumberArray: number[] = [];
 
-  public ngOnInit(): void {
+  public async ngOnInit(): Promise<void> {
     this.skeletonScreen = true;
-    this.getArticles(0).subscribe(articles => {
-      this.articles = articles;
-      this.skeletonScreen = false;
+
+    const octokit = new Octokit({
+      auth: environment.githubAccessToken,
     });
-    this.getPageNumber();
+
+    const githubResponse = await octokit.request(
+      'GET /repos/{owner}/{repo}/issues',
+      {
+        owner: 'ryusukevlc',
+        repo: 'blog-archive',
+      }
+    );
+
+    const articles: UserArticle[] = [];
+    for (const data of githubResponse.data) {
+      const tagList: UserTag[] = [];
+      for (const label of data.labels) {
+        if (typeof label !== 'string') {
+          const userTag: UserTag = new UserTag(
+            label?.id ?? 0,
+            label?.name ?? '',
+            new Date(),
+            new Date()
+          );
+          tagList.push(userTag);
+        }
+      }
+
+      const htmlContent = marked(data?.body ?? '');
+
+      const article: UserArticle = new UserArticle(
+        data.number,
+        data.title.replace(/^\d{4}-\d{2}-\d{2}\s*/, ''),
+        htmlContent,
+        data.title.split(' ')[0],
+        '',
+        tagList,
+        htmlContent.replace(/<\/?[^>]+(>|$)/g, '').substring(0, 180),
+        20
+      );
+      articles.push(article);
+    }
+
+    this.articles = articles;
+
+    this.skeletonScreen = false;
+    // this.getArticles(0).subscribe(articles => {
+    //   this.articles = articles;
+    // });
+    // this.getPageNumber();
   }
 
-  public moveToArticleDetail(articleId: number) {
-    this.routingService.moveToArticleDetail(articleId);
+  public moveToArticleDetail(issueNumber: number) {
+    this.routingService.moveToArticleDetail(issueNumber);
   }
 
   public movePreviousPage() {

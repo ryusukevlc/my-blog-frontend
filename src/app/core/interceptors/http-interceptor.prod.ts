@@ -16,19 +16,19 @@ export class httpInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    nProgress.configure({ showSpinner: false });
-    if (req.reportProgress) {
-      nProgress.start();
-      return next.handle(req).pipe(
-        tap((event: HttpEvent<any>) => {
-          // if (event.type == HttpEventType.Response) {}
-        }),
-        finalize(() => {
-          nProgress.done();
-        })
-      );
-    } else {
-      return next.handle(req);
-    }
+    // nProgress.configure({ showSpinner: false });
+    // if (req.reportProgress) {
+    //   nProgress.start();
+    //   return next.handle(req).pipe(
+    //     tap((event: HttpEvent<any>) => {
+    //       // if (event.type == HttpEventType.Response) {}
+    //     }),
+    //     finalize(() => {
+    //       nProgress.done();
+    //     })
+    //   );
+    // } else {
+    return next.handle(req);
+    // }
   }
 }

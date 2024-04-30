@@ -7,12 +7,12 @@
       <div
         class="text-base mx-3 prose prose-lg prose-indigo text-gray-500 dark:text-gray-400"
       >
-        {{ article.createdAt }}
-        <span *ngIf="isupdated">（updated: {{ article.updatedAt }}）</span>
+        {{ article?.createdAt }}
+        <span *ngIf="isupdated">（updated: {{ article?.updatedAt }}）</span>
       </div>
       <div
         class="mx-2 cursor-pointer"
-        *ngFor="let tag of article.tagList"
+        *ngFor="let tag of article?.tagList"
         (click)="sortByTag(tag.name)"
       >
         <span
@@ -25,13 +25,221 @@
       <h1 class="w-fit mx-auto">
         <span
           class="mt-2 block text-2xl font-bold leading-8 tracking-tight text-gray-900 dark:text-gray-50"
-          >{{ article.title }}</span
+          >{{ article?.title }}</span
         >
       </h1>
     </div>
     <div
       class="[&_a]:no-underline hover:[&_a]:underline max-w-none prose prose-slate prose-red prose-headings mx-auto mt-6 text-gray-600 dark:prose-invert dark:prose-p:text-gray-400 dark:prose-ul:text-gray-400 dark:prose-li:text-gray-400 dark:prose-ol:text-gray-400"
-      [innerHTML]="article.content"
+      [innerHTML]="article?.content"
     ></div>
+
+    <div [class.hidden]="!skeletonScreen">
+      <div class="flex animate-pulse">
+        <div class="flex-shrink-0">
+          <span
+            class="size-12 block bg-gray-200 rounded-full dark:bg-neutral-700"
+          ></span>
+        </div>
+
+        <div class="ms-4 mt-2 w-full">
+          <div class="flex justify-center">
+            <p
+              class="h-4 mb-6 bg-gray-200 rounded-full dark:bg-neutral-700"
+              style="width: 40%"
+            ></p>
+          </div>
+
+          <ul class="mt-5 space-y-3">
+            <li
+              class="w-full h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            ></li>
+            <li
+              class="w-full h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            ></li>
+            <li
+              class="w-full h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            ></li>
+            <li
+              class="w-full h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            ></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-2 flex animate-pulse">
+        <div class="flex-shrink-0">
+          <span
+            class="size-12 block bg-gray-200 rounded-full dark:bg-neutral-700"
+          ></span>
+        </div>
+
+        <div class="ms-4 mt-2 w-full">
+          <p
+            class="h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            style="width: 40%"
+          ></p>
+
+          <ul class="mt-5 space-y-3">
+            <li
+              class="w-full h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            ></li>
+            <li
+              class="w-full h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            ></li>
+            <li
+              class="w-full h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            ></li>
+            <li
+              class="w-full h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            ></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-2 flex animate-pulse">
+        <div class="flex-shrink-0">
+          <span
+            class="size-12 block bg-gray-200 rounded-full dark:bg-neutral-700"
+          ></span>
+        </div>
+
+        <div class="ms-4 mt-2 w-full">
+          <p
+            class="h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            style="width: 40%"
+          ></p>
+
+          <ul class="mt-5 space-y-3">
+            <li
+              class="w-full h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            ></li>
+            <li
+              class="w-full h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            ></li>
+            <li
+              class="w-full h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            ></li>
+            <li
+              class="w-full h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            ></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-2 flex animate-pulse">
+        <div class="flex-shrink-0">
+          <span
+            class="size-12 block bg-gray-200 rounded-full dark:bg-neutral-700"
+          ></span>
+        </div>
+
+        <div class="ms-4 mt-2 w-full">
+          <p
+            class="h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            style="width: 40%"
+          ></p>
+
+          <ul class="mt-5 space-y-3">
+            <li
+              class="w-full h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            ></li>
+            <li
+              class="w-full h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            ></li>
+            <li
+              class="w-full h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            ></li>
+            <li
+              class="w-full h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            ></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-2 flex animate-pulse">
+        <div class="flex-shrink-0">
+          <span
+            class="size-12 block bg-gray-200 rounded-full dark:bg-neutral-700"
+          ></span>
+        </div>
+
+        <div class="ms-4 mt-2 w-full">
+          <p
+            class="h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            style="width: 40%"
+          ></p>
+
+          <ul class="mt-5 space-y-3">
+            <li
+              class="w-full h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            ></li>
+            <li
+              class="w-full h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            ></li>
+            <li
+              class="w-full h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            ></li>
+            <li
+              class="w-full h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            ></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-2 flex animate-pulse">
+        <div class="flex-shrink-0">
+          <span
+            class="size-12 block bg-gray-200 rounded-full dark:bg-neutral-700"
+          ></span>
+        </div>
+
+        <div class="ms-4 mt-2 w-full">
+          <p
+            class="h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            style="width: 40%"
+          ></p>
+
+          <ul class="mt-5 space-y-3">
+            <li
+              class="w-full h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            ></li>
+            <li
+              class="w-full h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            ></li>
+            <li
+              class="w-full h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            ></li>
+            <li
+              class="w-full h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            ></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-2 flex animate-pulse">
+        <div class="flex-shrink-0">
+          <span
+            class="size-12 block bg-gray-200 rounded-full dark:bg-neutral-700"
+          ></span>
+        </div>
+
+        <div class="ms-4 mt-2 w-full">
+          <p
+            class="h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            style="width: 40%"
+          ></p>
+
+          <ul class="mt-5 space-y-3">
+            <li
+              class="w-full h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            ></li>
+            <li
+              class="w-full h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            ></li>
+            <li
+              class="w-full h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            ></li>
+            <li
+              class="w-full h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+            ></li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
